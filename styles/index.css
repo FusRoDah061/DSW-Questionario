@@ -1,0 +1,188 @@
+:root {
+  --color-white: #f8f8fc;
+  --box-shadow: 0px 1px 3px 0px #ccc;
+  --box-shadow-pergunta: 0px 1px 20px -2px #ccc;
+  --box-shadow-pergunta-alta: 0px 1px 100px -40px #262626;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #262626;
+}
+
+html,
+body {
+  background-color: var(--color-white);
+}
+
+.app-title {
+  text-align: center;
+  padding: 20px 0px 30px 0px;
+}
+
+.app-title span {
+  display: block;
+  font-family: 'Baloo Chettan', cursive;
+}
+
+.app-title .ifsp {
+  position: relative;
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  color: #2f9e41;
+  font-weight: bold;
+  font-size: 40pt;
+}
+
+.app-title .ifsp span {
+  position: absolute;
+  background-color: white;
+  width: 13px;
+  height: 14px;
+  top: 13px;
+  left: 2px;
+}
+
+.app-title .ifsp span::before {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background: #cd191e;
+  top: 1px;
+  left: 1px;
+  border-radius: 100%;
+}
+
+.app-content {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
+
+.lista-tentativas {
+  position: relative;
+  display: block;
+}
+
+.lista-tentativas li {
+  position: relative;
+  display: block;
+  list-style: none;
+  height: 40px;
+  border-radius: 6px;
+  -webkit-box-shadow: var(--box-shadow);
+          box-shadow: var(--box-shadow);
+  margin: 5px;
+}
+
+.lista-tentativas li .lista-btn-rm {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.08);
+  border: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  outline: none;
+}
+
+.lista-tentativas li .lista-btn-rm + a,
+.lista-tentativas li .lista-btn-rm p {
+  margin-left: 50px;
+}
+
+.lista-tentativas li .lista-btn-rm .icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  line-height: 40px;
+  font-size: 12pt;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.lista-tentativas li .lista-btn-rm:hover .icon {
+  -webkit-animation-name: pickup;
+          animation-name: pickup;
+  -webkit-animation-delay: .04s;
+          animation-delay: .04s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+}
+
+.lista-tentativas li a,
+.lista-tentativas li p {
+  line-height: 40px;
+}
+
+.lista-tentativas li ion-icon.open {
+  line-height: 40px;
+}
+
+@-webkit-keyframes pickup {
+  0% {
+    font-size: 12pt;
+  }
+  40% {
+    font-size: 14pt;
+    -webkit-transform: rotateX(40deg);
+            transform: rotateX(40deg);
+  }
+  100% {
+    font-size: 19pt;
+  }
+}
+
+@keyframes pickup {
+  0% {
+    font-size: 12pt;
+  }
+  40% {
+    font-size: 14pt;
+    -webkit-transform: rotateX(40deg);
+            transform: rotateX(40deg);
+  }
+  100% {
+    font-size: 19pt;
+  }
+}
+
+.content {
+  width: 30vw;
+  min-width: 300px;
+  margin: auto;
+}
+
+.btn {
+  display: block;
+  position: relative;
+  margin: 15px auto;
+  padding: 6px 30px;
+  width: 300px;
+}
+
+.btn .icon {
+  position: absolute;
+  top: 3px;
+  left: 28px;
+  color: white;
+  opacity: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+  font-size: 18pt;
+}
+
+.btn:hover .icon {
+  opacity: 1;
+  left: 250px;
+}

@@ -1,0 +1,59 @@
+.visao-quadro:not(:checked) ~ .perguntas .pergunta {
+  position: absolute;
+  height: 100%;
+  -webkit-box-shadow: var(--box-shadow-pergunta);
+          box-shadow: var(--box-shadow-pergunta);
+  border-radius: 5px;
+  width: 40vw;
+  opacity: 0;
+}
+
+.visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa, .visao-quadro:not(:checked) ~ .perguntas .pergunta--esq, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir {
+  display: block;
+  opacity: 1;
+}
+
+.visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa {
+  min-width: 400px;
+  -webkit-box-shadow: var(--box-shadow-pergunta-alta);
+          box-shadow: var(--box-shadow-pergunta-alta);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  z-index: 10;
+  cursor: default;
+}
+
+.visao-quadro:not(:checked) ~ .perguntas .pergunta--esq, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir {
+  opacity: .8;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+  min-width: 320px;
+}
+
+.visao-quadro:not(:checked) ~ .perguntas .pergunta--esq::before, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.visao-quadro:not(:checked) ~ .perguntas .pergunta--esq {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  left: 5vw;
+}
+
+.visao-quadro:not(:checked) ~ .perguntas .pergunta--dir {
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+  right: 5vw;
+}

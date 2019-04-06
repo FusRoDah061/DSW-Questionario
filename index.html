@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="utf-8">
+   <title>Questionário web IFSP</title>
+
+   <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Open+Sans:400,700" rel="stylesheet">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+   <header>
+      <h1 class="app-title"><span>Questionário Web</span> <span class="ifsp"><span></span>IFSP</span></h1>
+   </header>
+
+   <div class="app-content">
+
+      <div class="content">
+         <a href="responder.html" class="btn btn-primary btn-lg" role="button">Iniciar questionário <i
+               class="icon ion-md-send"></i></a>
+
+         <div id="js-tentativas-passadas">
+            <p>Tentativas passadas</p>
+
+            <ul class="lista-tentativas">
+               <li>
+                  <button class="lista-btn-rm"><i class="icon ion-md-trash"></i></button>
+                  <a href="responder.html">Tentativa iniciada em 20:04:00</a>
+               </li>
+               <li>
+                  <button class="lista-btn-rm"><i class="icon ion-md-trash"></i></button>
+                  <a href="responder.html">Tentativa iniciada em 20:04:00</a>
+               </li>
+               <li>
+                  <button class="lista-btn-rm"><i class="icon ion-md-trash"></i></button>
+                  <a href="responder.html">Tentativa iniciada em 20:04:00</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <script src="scripts/index.js"></script>
+</body>
+
+</html>

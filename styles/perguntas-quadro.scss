@@ -1,0 +1,64 @@
+.visao-quadro {
+   &:checked+.visao-quadro-label {
+      background-color: #343a40;
+      color: white;
+
+      .icon {
+         color: white;
+      }
+   }
+
+   &:checked~.perguntas {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      padding: 0px 30px;
+      min-height: 300px;
+      height: auto;
+      align-content: start;
+
+      .pergunta {
+         position: relative;
+         display: block;
+         opacity: 1;
+         box-shadow: var(--box-shadow-pergunta);
+         border-radius: 5px;
+         font-size: 8pt;
+         height: 110px;
+         padding: 10px 15px;
+
+         .indicador-respondida {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            width: 15px;
+            height: 15px;
+            background-color: #00cc00;
+            border-radius: 100%;
+            text-align: center;
+
+            .icon {
+               font-weight: bold;
+               color: white;
+               line-height: 6px;
+               font-size: 6pt;
+            }
+         }
+
+         .enunciado {
+            display: block;
+            font-size: inherit;
+            text-align: justify;
+            max-height: 70px;
+
+            span {
+               font-weight: bold;
+            }
+         }
+
+         .alternativas {
+            display: none;
+         }
+      }
+   }
+}

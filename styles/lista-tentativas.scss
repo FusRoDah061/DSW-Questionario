@@ -1,0 +1,76 @@
+$altura-li: 40px;
+$btn-rm-cor: rgba(0, 0, 0, .08);
+
+.lista-tentativas {
+   position: relative;
+   display: block;
+
+   li {
+      position: relative;
+      display: block;
+      list-style: none;
+      height: $altura-li;
+      border-radius: 6px;
+      box-shadow: var(--box-shadow);
+      margin: 5px;
+
+      .lista-btn-rm {
+         position: absolute;
+         width: $altura-li;
+         height: $altura-li;
+         top: 0;
+         left: 0;
+         background-color: $btn-rm-cor;
+         border: none;
+         border-top-left-radius: 6px;
+         border-bottom-left-radius: 6px;
+         outline: none;
+
+         &+a,
+         p {
+            margin-left: 50px;
+         }
+
+         .icon {
+            display: block;
+            width: $altura-li;
+            height: $altura-li;
+            opacity: 1;
+            line-height: $altura-li;
+            font-size: 12pt;
+            transition: .2s;
+         }
+
+         &:hover .icon {
+            animation-name: pickup;
+            animation-delay: .04s;
+            animation-fill-mode: forwards;
+            animation-duration: .5s;
+         }
+      }
+
+      a,
+      p {
+         line-height: $altura-li;
+      }
+
+      ion-icon.open {
+         line-height: $altura-li;
+      }
+   }
+}
+
+@keyframes pickup {
+   0% {
+      font-size: 12pt;
+   }
+
+   40% {
+      font-size: 14pt;
+      transform: rotateX(40deg);
+   }
+
+   100% {
+      font-size: 19pt;
+   }
+}

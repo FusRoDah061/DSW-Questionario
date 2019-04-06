@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="utf-8">
+   <title>Questionário web IFSP</title>
+
+   <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Open+Sans:400,700" rel="stylesheet">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="styles/responder.css">
+</head>
+
+<body>
+
+   <header>
+      <h1 class="app-title"><span>Questionário Web</span> <span class="ifsp"><span></span>IFSP</span></h1>
+   </header>
+
+   <div class="app-content">
+
+      <input id="js-toggle-quadro" type="checkbox" class="visao-quadro">
+      <label for="js-toggle-quadro" class="btn btn-outline-dark visao-quadro-label">Ver todas <i
+            class="icon ion-md-grid"></i></label>
+
+      <ul id="js-perguntas" class="perguntas">
+      </ul>
+
+      <div class="btns-navegacao">
+         <button class="btn btn-light btn-sm" id="js-anterior-pergunta">Anterior</button>
+         <button class="btn btn-primary" id="js-proxima-pergunta">Próxima</button>
+      </div>
+
+      <ul id="js-indicador-perguntas" class="indicador-perguntas">
+         <li class="indicador indicador--marcado">1</li>
+         <li class="indicador indicador--marcado">2</li>
+         <li class="indicador indicador--marcado">3</li>
+         <li class="indicador indicador--atual">4</li>
+         <li class="indicador">5</li>
+         <li class="indicador">6</li>
+         <li class="indicador">7</li>
+         <li class="indicador">8</li>
+         <li class="indicador">9</li>
+         <li class="indicador">10</li>
+      </ul>
+
+   </div>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script src="scripts/responder.js"></script>
+</body>
+
+</html>
