@@ -36,16 +36,6 @@
   min-width: 320px;
 }
 
-.visao-quadro:not(:checked) ~ .perguntas .pergunta--esq::before, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--esq {
   -webkit-transform: scale(0.5);
           transform: scale(0.5);

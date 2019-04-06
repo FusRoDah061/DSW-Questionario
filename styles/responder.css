@@ -102,16 +102,6 @@ body {
   min-width: 320px;
 }
 
-.visao-quadro:not(:checked) ~ .perguntas .pergunta--esq::before, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--esq {
   -webkit-transform: scale(0.5);
           transform: scale(0.5);
@@ -255,7 +245,7 @@ header .app-title .ifsp span::before {
 }
 
 .perguntas .pergunta .enunciado {
-  font-size: 10pt;
+  font-size: 12pt;
   text-align: justify;
   margin: 0;
 }
@@ -264,11 +254,19 @@ header .app-title .ifsp span::before {
   font-weight: bold;
 }
 
-.perguntas .pergunta .form-check-label {
-  font-size: 11pt;
+.perguntas .pergunta .alternativas {
+  margin-top: 10px;
 }
 
-.perguntas .pergunta .form-check-label span {
+.perguntas .pergunta .alternativas .form-check {
+  margin: 5px 0px;
+}
+
+.perguntas .pergunta .alternativas .form-check .form-check-label {
+  font-size: 10pt;
+}
+
+.perguntas .pergunta .alternativas .form-check .form-check-label span {
   font-weight: bold;
 }
 

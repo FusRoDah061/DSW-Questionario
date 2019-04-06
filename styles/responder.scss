@@ -63,7 +63,7 @@ header {
       border-radius: 3px;
 
       .enunciado {
-         font-size: 10pt;
+         font-size: 12pt;
          text-align: justify;
          margin: 0;
 
@@ -72,11 +72,19 @@ header {
          }
       }
 
-      .form-check-label {
-         font-size: 11pt;
+      .alternativas {
+         margin-top: 10px;
 
-         span {
-            font-weight: bold;
+         .form-check {
+            margin: 5px 0px;
+
+            .form-check-label {
+               font-size: 10pt;
+
+               span {
+                  font-weight: bold;
+               }
+            }
          }
       }
    }

@@ -58,7 +58,7 @@ var app = {
             html += `
                 <li class="pergunta">
                     <p class="enunciado">
-                        <span>${i + 1}.</span> ${perguntas[i].enunciado}
+                        <span>${i + 1}.</span> ${perguntas[i].enunciado.encodeHtml().trim()}
                     </p>
 
                     <ul class="alternativas">
@@ -76,9 +76,9 @@ var app = {
         let pergunta = $('#js-perguntas').children().eq(numero - 1);
 
         for (let elem of $('.pergunta--ativa, .pergunta--esq, .pergunta--dir')) {
-            elem.classList.removeClass('pergunta--ativa');
-            elem.classList.removeClass('pergunta--esq');
-            elem.classList.removeClass('pergunta--dir');
+            $(elem).removeClass('pergunta--ativa');
+            $(elem).removeClass('pergunta--esq');
+            $(elem).removeClass('pergunta--dir');
         }
 
         pergunta.addClass('pergunta--ativa');
@@ -86,12 +86,38 @@ var app = {
         if (numero > 1) {
             let perguntaAnterior = $('#js-perguntas').children().eq(numero - 2);
             perguntaAnterior.addClass('pergunta--esq');
+            perguntaAnterior.click(this.perguntaAnterior.bind(this));
         }
 
         if (numero < 10) {
             let proximaPergunta = $('#js-perguntas').children().eq(numero);
             proximaPergunta.addClass('pergunta--dir');
+            proximaPergunta.click(this.proximaPergunta.bind(this));
         }
+    },
+
+    proximaPergunta: function () {
+
+        if (this.perguntaAtual == 10) {
+            //TODO: finalizar questionário
+        } else {
+            this.perguntaAtual++;
+            this.definePerguntaAtual(this.perguntaAtual);
+        }
+
+        if (app.perguntaAtual > 9)
+            $('#js-proxima-pergunta').html('Finalizar');
+        else
+            $('#js-proxima-pergunta').html('Próxima');
+    },
+
+    perguntaAnterior: function () {
+        if (this.perguntaAtual > 1) {
+            this.perguntaAtual--;
+            this.definePerguntaAtual(this.perguntaAtual);
+        }
+
+        $('#js-proxima-pergunta').html('Próxima');
     }
 };
 
@@ -108,4 +134,12 @@ $(document).ready(function () {
             //TODO: exibir mensagem de erro.
         }
     );
+
+    $('#js-proxima-pergunta').click(function () {
+        app.proximaPergunta();
+    });
+
+    $('#js-anterior-pergunta').click(function () {
+        app.perguntaAnterior();
+    });
 });
