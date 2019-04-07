@@ -93,7 +93,8 @@ body {
   outline: none;
 }
 
-.lista-tentativas li .lista-btn-rm + a, .lista-tentativas li .lista-btn-rm p {
+.lista-tentativas li .lista-btn-rm + a,
+.lista-tentativas li .lista-btn-rm p {
   margin-left: 50px;
 }
 
@@ -119,7 +120,8 @@ body {
           animation-duration: .5s;
 }
 
-.lista-tentativas li a, .lista-tentativas li p {
+.lista-tentativas li a,
+.lista-tentativas li p {
   line-height: 40px;
 }
 

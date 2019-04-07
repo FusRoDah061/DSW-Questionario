@@ -7,6 +7,7 @@
       border-radius: 5px;
       width: 40vw;
       opacity: 0;
+      z-index: 0;
 
       &--ativa,
       &--esq,
@@ -34,7 +35,8 @@
          top: 0;
          bottom: 0;
          cursor: pointer;
-         min-width: 320px;
+         min-width: 360px;
+         z-index: 5;
       }
 
       &--esq {

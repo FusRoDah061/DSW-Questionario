@@ -72,6 +72,7 @@ body {
   border-radius: 5px;
   width: 40vw;
   opacity: 0;
+  z-index: 0;
 }
 
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa, .visao-quadro:not(:checked) ~ .perguntas .pergunta--esq, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir {
@@ -99,7 +100,8 @@ body {
   top: 0;
   bottom: 0;
   cursor: pointer;
-  min-width: 320px;
+  min-width: 360px;
+  z-index: 5;
 }
 
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--esq {

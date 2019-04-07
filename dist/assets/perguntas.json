@@ -1,0 +1,201 @@
+[{
+    "id": 1,
+    "enunciado": "Dentro de qual tag HTML é colocado o código JavaScript?",
+    "alternativa-correta": 3,
+    "alternativas": [
+        "<js>",
+        "<javascript>",
+        "<scripting>",
+        "<script>"
+    ]
+}, {
+    "id": 2,
+    "enunciado": "Qual trecho de código JavaScript altera o conteúdo de um elemento <p> HTML?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "document.getElement('p').innerHTML = 'Hello World!'",
+        "document.getElementById('demo').innerHTML = 'Hello World!'",
+        "document.getElementByName('p').innerHTML = 'Hello World!'",
+        "#demo.innerHTML = 'Hello World!'"
+    ]
+}, {
+    "id": 3,
+    "enunciado": "Qual o local correto para inserir o código JavaScript?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "Dentro da tag <head>",
+        "Dentro da tag <body>",
+        "Tanto na tag <head> quanto na tag <body>",
+        "Dentro da tag <html>"
+    ]
+}, {
+    "id": 4,
+    "enunciado": "Qual a sintaxe correta para referenciar um script index.js?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "<script name='index.js'></script>",
+        "<script href='index.js'/>",
+        "<script src='index.js'></script>",
+        "<script name='index.js'/>"
+    ]
+}, {
+    "id": 5,
+    "enunciado": "Qual a sintaxe para exibir um alerta ao usuário em JavaScript?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "alert('Hello World')",
+        "alertBox('Hello World')",
+        "msg('Hello World')",
+        "msgBox('Hello World')"
+    ]
+}, {
+    "id": 6,
+    "enunciado": "Como chamar uma função JavaScript?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "myFunction()",
+        "call myFunction()",
+        "call function myFunction()",
+        "exec myFunction()"
+    ]
+}, {
+    "id": 7,
+    "enunciado": "Qual a sintaxe da estrutura condicional IF em JavaScript?",
+    "alternativa-correta": 3,
+    "alternativas": [
+        "if var == 1 then",
+        "if var == 1",
+        "if var == 1 do",
+        "if (var == 1)"
+    ]
+}, {
+    "id": 8,
+    "enunciado": "Como escrever um comentário em JavaScript?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "'Este é um comentário",
+        "<!--Este é um comentário-->",
+        "//Este é um comentário",
+        "--Este é um comentário"
+    ]
+}, {
+    "id": 9,
+    "enunciado": "Qual orgão controla os padrões para web?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "Mozilla",
+        "Google",
+        "The World Wide Web Consortium (W3C)",
+        "Organização Internacional de Normalização (ISO)"
+    ]
+}, {
+    "id": 10,
+    "enunciado": "Qual o elemento HTML para inserir quebras de linha?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "<p>",
+        "<br>",
+        "<crlf>",
+        "<break>"
+    ]
+}, {
+    "id": 11,
+    "enunciado": "Qual a sintaxe da estrutura de repetição WHILE em JavaScript?",
+    "alternativa-correta": 3,
+    "alternativas": [
+        "while (i <= 10; i++)",
+        "while i <= 10 do",
+        "while i = 1 to 10",
+        "while (i <= 10)"
+    ]
+}, {
+    "id": 12,
+    "enunciado": "Qual a sintaxe da estrutura de repetição FOR em JavaScript?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "for (i <= 5; i++)",
+        "for i = 0 to 5",
+        "for (i = 0; i <= 5; i++)",
+        "for (i = 0; i <= 5)"
+    ]
+}, {
+    "id": 13,
+    "enunciado": "Qual das alternativas define corretamente um hyperlink HTML?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "<a name='http://www.example.com'>Site exemplo</a>",
+        "<a href='http://www.example.com'>Site exemplo</a>",
+        "<a link='http://www.example.com'>Site exemplo</a>",
+        "<link href='http://www.example.com'>Site exemplo</link>"
+    ]
+}, {
+    "id": 14,
+    "enunciado": "Qual dos elementos HTML são utilizados na definição de tabelas?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "<table><cell><column><row>",
+        "<table><thead><tbody>",
+        "<table><row><column><td>",
+        "<table><head><footer>"
+    ]
+}, {
+    "id": 15,
+    "enunciado": "Com qual tag são criadas listas HTML ordenadas (numeradas)?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "<ul>",
+        "<ol>",
+        "<nl>",
+        "<list>"
+    ]
+}, {
+    "id": 16,
+    "enunciado": "Com qual tag são criadas listas HTML não-ordenadas (em tópicos)?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "<bl>",
+        "<ul>",
+        "<list>",
+        "<ol>"
+    ]
+}, {
+    "id": 17,
+    "enunciado": "Qual tag identifica a versão do HTML utilizada?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "<DOCTYPE>",
+        "<VERSION>",
+        "<V>",
+        "<HTML>"
+    ]
+}, {
+    "id": 18,
+    "enunciado": "Como são definidas caixas de seleção em HTML?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "<check>",
+        "<checkbox>",
+        "<input type='checkbox'>",
+        "<input type='check'>"
+    ]
+}, {
+    "id": 19,
+    "enunciado": "Como são definidas caixas de texto em HTML?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "<textinput>",
+        "<textbox>",
+        "<input type='text'>",
+        "<input type='textfield'>"
+    ]
+}, {
+    "id": 20,
+    "enunciado": "A tag <iframe> é utilizada para carregar uma página web dentro de outra.",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "Verdadeiro",
+        "Falso",
+        "Falso. Não existe uma tag <iframe>",
+        "Falso. Toda página web deve estar dentro da tag <iframe>"
+    ]
+}]
