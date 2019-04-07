@@ -64,12 +64,16 @@ body {
   height: 100%;
 }
 
-.lista-tentativas {
+.tentativas {
+  display: none;
+}
+
+.tentativas .lista-tentativas {
   position: relative;
   display: block;
 }
 
-.lista-tentativas li {
+.tentativas .lista-tentativas li {
   position: relative;
   display: block;
   list-style: none;
@@ -80,7 +84,7 @@ body {
   margin: 5px;
 }
 
-.lista-tentativas li .lista-btn-rm {
+.tentativas .lista-tentativas li .lista-btn-rm {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -93,12 +97,7 @@ body {
   outline: none;
 }
 
-.lista-tentativas li .lista-btn-rm + a,
-.lista-tentativas li .lista-btn-rm p {
-  margin-left: 50px;
-}
-
-.lista-tentativas li .lista-btn-rm .icon {
+.tentativas .lista-tentativas li .lista-btn-rm .icon {
   display: block;
   width: 40px;
   height: 40px;
@@ -109,7 +108,7 @@ body {
   transition: .2s;
 }
 
-.lista-tentativas li .lista-btn-rm:hover .icon {
+.tentativas .lista-tentativas li .lista-btn-rm:hover .icon {
   -webkit-animation-name: pickup;
           animation-name: pickup;
   -webkit-animation-delay: .04s;
@@ -120,12 +119,38 @@ body {
           animation-duration: .5s;
 }
 
-.lista-tentativas li a,
-.lista-tentativas li p {
-  line-height: 40px;
+.tentativas .lista-tentativas li div {
+  margin-left: 40px;
+  padding: 3px 10px;
+  height: 100%;
 }
 
-.lista-tentativas li ion-icon.open {
+.tentativas .lista-tentativas li div a {
+  width: 100%;
+  display: block;
+}
+
+.tentativas .lista-tentativas li div a, .tentativas .lista-tentativas li div .nota, .tentativas .lista-tentativas li div .data {
+  margin: 0px;
+  font-size: 10pt;
+}
+
+.tentativas .lista-tentativas li div .nota, .tentativas .lista-tentativas li div .data {
+  font-size: 8pt;
+  color: #999;
+  float: left;
+}
+
+.tentativas .lista-tentativas li div .nota {
+  width: 50%;
+}
+
+.tentativas .lista-tentativas li div .data {
+  width: 50%;
+  text-align: end;
+}
+
+.tentativas .lista-tentativas li ion-icon.open {
   line-height: 40px;
 }
 

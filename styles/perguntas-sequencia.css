@@ -1,3 +1,7 @@
+.visao-quadro:not(:checked) ~ .perguntas {
+  margin: 40px 0px;
+}
+
 .visao-quadro:not(:checked) ~ .perguntas .pergunta {
   position: absolute;
   height: 100%;

@@ -64,6 +64,10 @@ body {
   height: 100%;
 }
 
+.visao-quadro:not(:checked) ~ .perguntas {
+  margin: 40px 0px;
+}
+
 .visao-quadro:not(:checked) ~ .perguntas .pergunta {
   position: absolute;
   height: 100%;
@@ -145,8 +149,8 @@ body {
   -webkit-box-shadow: var(--box-shadow-pergunta);
           box-shadow: var(--box-shadow-pergunta);
   border-radius: 5px;
-  font-size: 8pt;
-  height: 110px;
+  font-size: 9pt;
+  height: 85px;
   padding: 10px 15px;
 }
 
