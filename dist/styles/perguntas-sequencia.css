@@ -16,6 +16,7 @@
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa, .visao-quadro:not(:checked) ~ .perguntas .pergunta--esq, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir {
   display: block;
   opacity: 1;
+  cursor: pointer;
 }
 
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa {

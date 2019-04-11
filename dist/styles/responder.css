@@ -82,6 +82,7 @@ body {
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa, .visao-quadro:not(:checked) ~ .perguntas .pergunta--esq, .visao-quadro:not(:checked) ~ .perguntas .pergunta--dir {
   display: block;
   opacity: 1;
+  cursor: pointer;
 }
 
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa {
@@ -152,6 +153,7 @@ body {
   font-size: 9pt;
   height: 85px;
   padding: 10px 15px;
+  cursor: pointer;
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta .enunciado {
@@ -245,7 +247,6 @@ header .app-title .ifsp span::before {
   -webkit-transition: .15s;
   transition: .15s;
   list-style: none;
-  cursor: pointer;
   border-radius: 3px;
 }
 
