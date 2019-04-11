@@ -4,9 +4,12 @@ var app = {
 
     carregarTentativas: function () {
         let tentativas = storage.get('tentativas');
+        this.tentativas = JSON.parse(tentativas);
 
-        if(tentativas){
-            this.tentativas = JSON.parse(tentativas);
+        if(!this.tentativas)
+            this.tentativas = [];
+
+        if(this.tentativas.length > 0){
 
             $('#js-tentativas-passadas').html('');
             for(let i = 0; i < this.tentativas.length; i++) {
@@ -52,6 +55,11 @@ var app = {
             });
 
             $('#js-tentativas').show(100);
+            $('#js-avaliacao').show(100);
+        }
+        else{
+            $('#js-tentativas').hide(100);
+            $('#js-avaliacao').hide(100);
         }
     }
 

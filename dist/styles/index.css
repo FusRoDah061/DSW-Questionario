@@ -189,7 +189,11 @@ body {
   margin: auto;
 }
 
-.btn {
+h2 {
+  font-size: 15pt;
+}
+
+#js-btn-inicia {
   display: block;
   position: relative;
   margin: 15px auto;
@@ -197,7 +201,7 @@ body {
   width: 300px;
 }
 
-.btn .icon {
+#js-btn-inicia .icon {
   position: absolute;
   top: 3px;
   left: 28px;
@@ -208,7 +212,11 @@ body {
   font-size: 18pt;
 }
 
-.btn:hover .icon {
+#js-btn-inicia:hover .icon {
   opacity: 1;
   left: 250px;
+}
+
+.avaliacao {
+  display: none;
 }

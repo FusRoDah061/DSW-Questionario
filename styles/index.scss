@@ -7,7 +7,11 @@
    margin: auto;
 }
 
-.btn {
+h2 {
+   font-size: 15pt;
+}
+
+#js-btn-inicia {
    display: block;
    position: relative;
    margin: 15px auto;
@@ -28,4 +32,8 @@
       opacity: 1;
       left: 250px;
    }
+}
+
+.avaliacao {
+   display: none;
 }
