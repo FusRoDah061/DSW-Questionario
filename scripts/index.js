@@ -33,8 +33,8 @@ var app = {
                     text: 'tem certeza de que deseja remover a tentativa? Essa ação não pode ser revertida.',
                     type: 'error',
                     customClass: {
-                        confirmButton: 'btn btn-success',
-                        cancelButton: 'btn btn-danger'
+                        confirmButton: 'btn btn-block btn-success',
+                        cancelButton: 'btn btn-block btn-danger'
                     },
                     buttonsStyling: false,
                     showCancelButton: true,
@@ -48,7 +48,7 @@ var app = {
                         storage.set('tentativas', JSON.stringify(caller.tentativas));
                         caller.carregarTentativas();
                     }
-                  })
+                })
             });
 
             $('#js-tentativas').show(100);

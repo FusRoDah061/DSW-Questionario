@@ -1,24 +1,3 @@
-Array.prototype.amostra = function (qtd) {
-    let amostra = [];
-
-    if (this.length < qtd) throw new RangeError("O tamanho do vetor é menor do que o tamanho da amostra");
-
-    while (amostra.length < qtd) {
-        let indice = Math.round(Math.random() * (this.length - 1));
-
-        if (!amostra.includes(this[indice]))
-            amostra.push(this[indice]);
-    }
-
-    return amostra;
-}
-
-String.prototype.encodeHtml = function () {
-    return this.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
-        return '&#' + i.charCodeAt(0) + ';';
-    });
-}
-
 var app = {
 
     perguntas: [],
@@ -56,7 +35,7 @@ var app = {
             }
 
             html += `
-                <li class="pergunta">
+                <li id="pergunta-${perguntas[i].id}" class="pergunta" data-num-pergunta="${i + 1}">
                     <p class="enunciado">
                         <span>${i + 1}.</span> ${perguntas[i].enunciado.encodeHtml().trim()}
                     </p>
@@ -101,13 +80,21 @@ var app = {
                 if ($(this).hasClass('pergunta--dir'))
                     event.data.proximaPergunta();
             });
+
+            $('#js-proxima-pergunta').html('Próxima');
         }
+        else if(numero >= 10) {
+            $('#js-proxima-pergunta').html('Finalizar');
+        }
+
+        this.perguntaAtual = numero;
+        this.atualizaIndicador(this.perguntaAtual);
     },
 
     proximaPergunta: function () {
 
         if (this.perguntaAtual == 10) {
-            //TODO: finalizar questionário
+            this.salvarTentativa();
         } else {
             this.perguntaAtual++;
             this.definePerguntaAtual(this.perguntaAtual);
@@ -146,18 +133,108 @@ var app = {
                 e.addClass('indicador--atual');
             }
         }
+
     },
 
-    marcaPerguntaRespondida: function (id) {
+    marcaPerguntaRespondida: function (id, resposta) {
         let pergunta = this.perguntasSorteadas.find((i) => i.id == id);
 
-        if (pergunta)
+        if (pergunta) {
             pergunta.respondida = true;
+            pergunta.resposta = resposta;
+
+            $(`#pergunta-${pergunta.id}`).addClass('pergunta--respondida');
+        }
+    },
+
+    salvarTentativa: function () {
+
+        let caller = this;
+
+        Swal.fire({
+            title: 'Resultado do questionário',
+            html: `
+                <p>Perguntas em <span style="color: #2f9e41">VERDE</span> estão corretas.</p>
+                <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
+
+                <ul class="resultado">
+                    ${caller.perguntasSorteadas.map(function(pergunta, i) {
+                        if (pergunta.resposta == pergunta['alternativa-correta'])
+                            return `<li class="resultado--certa">${i + 1}</li>`;
+                        else
+                            return `<li>${i + 1}</li>`;
+                    }).join(' ')}
+                </ul>
+            `,
+            type: 'info',
+            customClass: {
+                confirmButton: 'btn btn-block btn-success',
+                cancelButton: 'btn btn-block btn-danger'
+            },
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: 'Concluir',
+            cancelButtonText: 'Descartar tentativa'
+        })
+        .then((result) => {
+            if (result.value) {
+                let somadorNota = function (acumulador, pergunta) {
+                    if (pergunta.resposta == pergunta['alternativa-correta'])
+                        acumulador += 1;
+
+                    return acumulador;
+                };
+
+                let tentativas = JSON.parse(storage.get('tentativas'));
+
+                if (!tentativas)
+                    tentativas = [];
+
+                tentativas.push({
+                    id: (tentativas[tentativas.length - 1]) ? tentativas[tentativas.length - 1].id + 1 : tentativas.length,
+                    data: new Date().toLocaleString('en-GB').split(',').join(''),
+                    perguntas: caller.perguntasSorteadas,
+                    nota: caller.perguntasSorteadas.reduce(somadorNota, 0)
+                });
+
+                storage.set('tentativas', JSON.stringify(tentativas));
+
+            }
+
+            location.href = 'index.html';
+        });
     }
 };
 
 $(document).ready(function () {
 
+    verificaTentativas();
+    //TODO: verificar se não foi carregada uma tentativa
+    obterPerguntas();
+    inicializarEventos();
+
+});
+
+function verificaTentativas() {
+    let tentativas = storage.get('tentativas');
+
+    if (tentativas)
+        if (JSON.parse(tentativas).length >= 3)
+            Swal.fire({
+                title: 'Limite de tentativas alcançado',
+                text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário na página inicial para liberar esse limite.',
+                type: 'error',
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                },
+                buttonsStyling: false
+            })
+            .then(function () {
+                location.href = 'index.html';
+            });
+}
+
+function obterPerguntas() {
     app.getListaPerguntas(
         function (perguntas) {
             app.perguntas = perguntas;
@@ -165,18 +242,30 @@ $(document).ready(function () {
 
             app.apresentaPerguntas(app.perguntasSorteadas);
             app.definePerguntaAtual(app.perguntaAtual);
-            app.atualizaIndicador(app.perguntaAtual);
 
-            $('.form-check-input').click(function () {
-                let perguntaId = $(this).attr('data-pergunta');
-                app.marcaPerguntaRespondida(parseInt(perguntaId));
+            $('.form-check-input').change(function () {
+                if (this.checked) {
+                    let perguntaId = $(this).attr('data-pergunta');
+                    let resposta = $(this).val();
+                    app.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
+                }
+            });
+
+            $('.pergunta').click(function () {
+                if ($('#js-toggle-quadro').prop("checked")) {
+                    let pergunta = $(this).attr('data-num-pergunta');
+                    $('#js-toggle-quadro').prop("checked", false);
+                    app.definePerguntaAtual(parseInt(pergunta));
+                }
             });
         },
         function (jqXHR, textStatus, errorThrown) {
             //TODO: exibir mensagem de erro.
         }
     );
+}
 
+function inicializarEventos() {
     $('#js-proxima-pergunta').click(function () {
         app.proximaPergunta();
     });
@@ -187,7 +276,5 @@ $(document).ready(function () {
 
     $('.indicador').click(function () {
         app.definePerguntaAtual(parseInt(this.innerHTML));
-        app.atualizaIndicador(parseInt(this.innerHTML));
     });
-
-});
+}

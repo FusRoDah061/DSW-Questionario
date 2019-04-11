@@ -35,7 +35,7 @@ var app = {
             }
 
             html += `
-                <li class="pergunta" data-num-pergunta="${i + 1}">
+                <li id="pergunta-${perguntas[i].id}" class="pergunta" data-num-pergunta="${i + 1}">
                     <p class="enunciado">
                         <span>${i + 1}.</span> ${perguntas[i].enunciado.encodeHtml().trim()}
                     </p>
@@ -82,6 +82,9 @@ var app = {
             });
 
             $('#js-proxima-pergunta').html('Próxima');
+        }
+        else if(numero >= 10) {
+            $('#js-proxima-pergunta').html('Finalizar');
         }
 
         this.perguntaAtual = numero;
@@ -130,6 +133,7 @@ var app = {
                 e.addClass('indicador--atual');
             }
         }
+
     },
 
     marcaPerguntaRespondida: function (id, resposta) {
@@ -138,32 +142,67 @@ var app = {
         if (pergunta) {
             pergunta.respondida = true;
             pergunta.resposta = resposta;
+
+            $(`#pergunta-${pergunta.id}`).addClass('pergunta--respondida');
         }
     },
 
     salvarTentativa: function () {
-        let somadorNota = function (acumulador, pergunta) {
-            if (pergunta.resposta == pergunta['alternativa-correta'])
-                acumulador += 1;
 
-            return acumulador;
-        };
+        let caller = this;
 
-        let tentativas = JSON.parse(storage.get('tentativas'));
+        Swal.fire({
+            title: 'Resultado do questionário',
+            html: `
+                <p>Perguntas em <span style="color: #2f9e41">VERDE</span> estão corretas.</p>
+                <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
 
-        if (!tentativas)
-            tentativas = [];
+                <ul class="resultado">
+                    ${caller.perguntasSorteadas.map(function(pergunta, i) {
+                        if (pergunta.resposta == pergunta['alternativa-correta'])
+                            return `<li class="resultado--certa">${i + 1}</li>`;
+                        else
+                            return `<li>${i + 1}</li>`;
+                    }).join(' ')}
+                </ul>
+            `,
+            type: 'info',
+            customClass: {
+                confirmButton: 'btn btn-block btn-success',
+                cancelButton: 'btn btn-block btn-danger'
+            },
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: 'Concluir',
+            cancelButtonText: 'Descartar tentativa'
+        })
+        .then((result) => {
+            if (result.value) {
+                let somadorNota = function (acumulador, pergunta) {
+                    if (pergunta.resposta == pergunta['alternativa-correta'])
+                        acumulador += 1;
 
-        tentativas.push({
-            id: (tentativas[tentativas.length - 1]) ? tentativas[tentativas.length - 1].id + 1 : tentativas.length,
-            data: new Date().toLocaleString('en-GB').split(',').join(''),
-            perguntas: this.perguntasSorteadas,
-            nota: this.perguntasSorteadas.reduce(somadorNota, 0)
+                    return acumulador;
+                };
+
+                let tentativas = JSON.parse(storage.get('tentativas'));
+
+                if (!tentativas)
+                    tentativas = [];
+
+                tentativas.push({
+                    id: (tentativas[tentativas.length - 1]) ? tentativas[tentativas.length - 1].id + 1 : tentativas.length,
+                    data: new Date().toLocaleString('en-GB').split(',').join(''),
+                    perguntas: caller.perguntasSorteadas,
+                    nota: caller.perguntasSorteadas.reduce(somadorNota, 0)
+                });
+
+                storage.set('tentativas', JSON.stringify(tentativas));
+
+            }
+
+            location.href = 'index.html';
         });
-
-        storage.set('tentativas', JSON.stringify(tentativas));
-
-        location.href = 'index.html';
     }
 };
 

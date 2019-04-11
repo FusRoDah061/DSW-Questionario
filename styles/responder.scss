@@ -113,6 +113,7 @@ header {
       float: left;
       min-width: 30px;
       min-height: 30px;
+      max-height: 30px;
       line-height: 30px;
       text-align: center;
       list-style: none;
@@ -142,5 +143,32 @@ header {
       &--atual {
          background-color: #2f9e41;
       }
+   }
+}
+
+.resultado {
+   position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+
+   li {
+      float: left;
+      min-width: 30px;
+      min-height: 30px;
+      max-height: 30px;
+      line-height: 30px;
+      text-align: center;
+      list-style: none;
+      border-radius: 100%;
+      font-size: 10pt;
+      margin: 10px;
+      background-color: #cd191e;
+      color: white;
+      font-weight: bold;
+   }
+
+   &--certa {
+      background-color: #2f9e41 !important;
    }
 }
