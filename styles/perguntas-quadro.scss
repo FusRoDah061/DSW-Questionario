@@ -28,6 +28,10 @@
          padding: 10px 15px;
          cursor: pointer;
 
+         &--ativa {
+            box-shadow:  var(--box-shadow-pergunta-ativa) !important;
+         }
+
          .enunciado {
             display: block;
             font-size: inherit;

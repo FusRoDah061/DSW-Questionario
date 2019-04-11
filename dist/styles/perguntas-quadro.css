@@ -33,6 +33,11 @@
   cursor: pointer;
 }
 
+.visao-quadro:checked ~ .perguntas .pergunta--ativa {
+  -webkit-box-shadow: var(--box-shadow-pergunta-ativa) !important;
+          box-shadow: var(--box-shadow-pergunta-ativa) !important;
+}
+
 .visao-quadro:checked ~ .perguntas .pergunta .enunciado {
   display: block;
   font-size: inherit;
