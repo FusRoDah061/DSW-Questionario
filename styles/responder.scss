@@ -103,6 +103,12 @@ header {
    justify-content: center;
    flex-wrap: wrap;
 
+   &:hover > .indicador:not(:hover) {
+      opacity: .7;
+      transform: scale(.9);
+      font-weight: bold;
+   }
+
    .indicador {
       float: left;
       min-width: 30px;
@@ -116,6 +122,12 @@ header {
       font-size: 10pt;
       cursor: pointer;
       margin: 10px;
+      transition: .3s;
+      transition-timing-function: ease-in-out;
+
+      &:hover {
+         transform: scale(1.1);
+      }
 
       &--marcado,
       &--atual {

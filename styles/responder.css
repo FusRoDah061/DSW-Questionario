@@ -297,6 +297,13 @@ header .app-title .ifsp span::before {
       flex-wrap: wrap;
 }
 
+.indicador-perguntas:hover > .indicador:not(:hover) {
+  opacity: .7;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  font-weight: bold;
+}
+
 .indicador-perguntas .indicador {
   float: left;
   min-width: 30px;
@@ -310,6 +317,15 @@ header .app-title .ifsp span::before {
   font-size: 10pt;
   cursor: pointer;
   margin: 10px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.indicador-perguntas .indicador:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .indicador-perguntas .indicador--marcado, .indicador-perguntas .indicador--atual {
