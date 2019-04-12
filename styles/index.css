@@ -223,4 +223,9 @@ h2 {
 .avaliacao {
   display: none;
 }
+
+.nota {
+  font-size: 50pt;
+  font-weight: bold;
+}
 /*# sourceMappingURL=index.css.map */

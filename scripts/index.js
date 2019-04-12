@@ -61,8 +61,58 @@ var app = {
             $('#js-tentativas').hide(100);
             $('#js-avaliacao').hide(100);
         }
-    }
+    },
 
+    avaliar: function (metodo) {
+
+        if(!this.tentativas) return;
+
+        let notaFinal = 0;
+
+        switch(metodo) {
+            case 'maior':
+                notaFinal = this.tentativas[0].nota;
+
+                this.tentativas.forEach(element => {
+                    if(element.nota > notaFinal) 
+                        notaFinal = element.nota;
+                });
+            break;
+
+            case 'media':
+                notaFinal = this.tentativas.reduce((acc, item) => {
+                    return acc + item.nota;
+                }, 0) / this.tentativas.length;
+            break;
+
+            case 'ultima':
+                notaFinal = this.tentativas[this.tentativas.length - 1].nota;
+            break;
+        }
+
+        console.log(notaFinal);
+        Swal.fire({
+            title: 'Resultado final',
+            html: `
+                <p>A sua nota final é:</p>
+
+                <p class="nota">${notaFinal.toFixed(2)}</p>
+            `,
+            type: 'success',
+            customClass: {
+                confirmButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+        })
+        .then(function () {
+
+        });
+
+    },
+
+    limparTentativas: function (){
+        
+    }
 }
 
 $(document).ready(function () {
@@ -87,5 +137,17 @@ function inicializaEventos (){
         else{
             location.href = "responder.html";
         }
+    });
+
+    $('#js-avaliar-maior-nota').click(function () {
+        app.avaliar('maior');
+    });
+
+    $('#js-avaliar-media-notas').click(function () {
+        app.avaliar('media');
+    });
+
+    $('#js-avaliar-ultima-nota').click(function () {
+        app.avaliar('ultima');
     });
 }

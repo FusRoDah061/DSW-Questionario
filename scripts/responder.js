@@ -104,8 +104,6 @@ var app = {
             $('#js-proxima-pergunta').html('Finalizar');
         else
             $('#js-proxima-pergunta').html('Próxima');
-
-        this.atualizaIndicador(this.perguntaAtual);
     },
 
     perguntaAnterior: function () {
@@ -115,8 +113,6 @@ var app = {
         }
 
         $('#js-proxima-pergunta').html('Próxima');
-
-        this.atualizaIndicador(this.perguntaAtual);
     },
 
     atualizaIndicador: function (numeroAtual) {
