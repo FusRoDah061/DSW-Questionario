@@ -17,7 +17,7 @@ var app = {
 
     apresentaPerguntas: function (perguntas) {
 
-        let letras = ['a', 'b', 'c', 'd'];
+        let letras = ['a', 'b', 'c', 'd', 'e'];
         let html = '';
 
         for (let i = 0; i < perguntas.length; i++) {
@@ -185,7 +185,7 @@ var app = {
 
                 if (!tentativas)
                     tentativas = [];
-                else   
+                else
                     tentativas = JSON.parse(tentativas);
 
                 tentativas.push({
