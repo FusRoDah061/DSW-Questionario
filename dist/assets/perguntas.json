@@ -6,17 +6,19 @@
         "<js>",
         "<javascript>",
         "<scripting>",
-        "<script>"
+        "<script>",
+        "<code>"
     ]
 }, {
     "id": 2,
-    "enunciado": "Qual trecho de código JavaScript altera o conteúdo de um elemento <p> HTML?",
+    "enunciado": "Qual trecho de código JavaScript altera o conteúdo de um elemento <p id='demo'> HTML?",
     "alternativa-correta": 1,
     "alternativas": [
         "document.getElement('p').innerHTML = 'Hello World!'",
         "document.getElementById('demo').innerHTML = 'Hello World!'",
         "document.getElementByName('p').innerHTML = 'Hello World!'",
-        "#demo.innerHTML = 'Hello World!'"
+        "#demo.innerHTML = 'Hello World!'",
+        "document.getElementById('demo').text = 'Hello World!'"
     ]
 }, {
     "id": 3,
@@ -26,7 +28,8 @@
         "Dentro da tag <head>",
         "Dentro da tag <body>",
         "Tanto na tag <head> quanto na tag <body>",
-        "Dentro da tag <html>"
+        "Dentro da tag <html>",
+        "Fora da tag <html>"
     ]
 }, {
     "id": 4,
@@ -36,7 +39,8 @@
         "<script name='index.js'></script>",
         "<script href='index.js'/>",
         "<script src='index.js'></script>",
-        "<script name='index.js'/>"
+        "<script name='index.js'/>",
+        "<link href='index.js'/>"
     ]
 }, {
     "id": 5,
@@ -46,7 +50,8 @@
         "alert('Hello World')",
         "alertBox('Hello World')",
         "msg('Hello World')",
-        "msgBox('Hello World')"
+        "msgBox('Hello World')",
+        "alerta('Hello World')"
     ]
 }, {
     "id": 6,
@@ -56,7 +61,8 @@
         "myFunction()",
         "call myFunction()",
         "call function myFunction()",
-        "exec myFunction()"
+        "exec myFunction()",
+        "myFunction"
     ]
 }, {
     "id": 7,
@@ -66,7 +72,8 @@
         "if var == 1 then",
         "if var == 1",
         "if var == 1 do",
-        "if (var == 1)"
+        "if (var == 1)",
+        "if (var = 1)"
     ]
 }, {
     "id": 8,
@@ -76,17 +83,19 @@
         "'Este é um comentário",
         "<!--Este é um comentário-->",
         "//Este é um comentário",
-        "--Este é um comentário"
+        "--Este é um comentário",
+        "'''Este é um comentário'''"
     ]
 }, {
     "id": 9,
     "enunciado": "Qual orgão controla os padrões para web?",
-    "alternativa-correta": 2,
+    "alternativa-correta": 1,
     "alternativas": [
         "Mozilla",
-        "Google",
         "The World Wide Web Consortium (W3C)",
-        "Organização Internacional de Normalização (ISO)"
+        "Organização Internacional de Normalização (ISO)",
+        "Google",
+        "Instituto de Engenheiros Eletricistas e Eletrônicos (IEEE)"
     ]
 }, {
     "id": 10,
@@ -96,7 +105,8 @@
         "<p>",
         "<br>",
         "<crlf>",
-        "<break>"
+        "<break>",
+        "<line>"
     ]
 }, {
     "id": 11,
@@ -106,7 +116,8 @@
         "while (i <= 10; i++)",
         "while i <= 10 do",
         "while i = 1 to 10",
-        "while (i <= 10)"
+        "while (i <= 10)",
+        "while i <= 10"
     ]
 }, {
     "id": 12,
@@ -116,7 +127,8 @@
         "for (i <= 5; i++)",
         "for i = 0 to 5",
         "for (i = 0; i <= 5; i++)",
-        "for (i = 0; i <= 5)"
+        "for (i = 0; i <= 5)",
+        "for i = 0 to 5 step 1"
     ]
 }, {
     "id": 13,
@@ -126,17 +138,19 @@
         "<a name='http://www.example.com'>Site exemplo</a>",
         "<a href='http://www.example.com'>Site exemplo</a>",
         "<a link='http://www.example.com'>Site exemplo</a>",
-        "<link href='http://www.example.com'>Site exemplo</link>"
+        "<link href='http://www.example.com'>Site exemplo</link>",
+        "<a src='http://www.example.com'>Site exemplo</a>"
     ]
 }, {
     "id": 14,
     "enunciado": "Qual dos elementos HTML são utilizados na definição de tabelas?",
-    "alternativa-correta": 2,
+    "alternativa-correta": 1,
     "alternativas": [
         "<table><cell><column><row>",
-        "<table><thead><tbody>",
+        "<table><thead><tbody><tfoot>",
         "<table><row><column><td>",
-        "<table><head><footer>"
+        "<table><head><footer>",
+        "<table><thead><footer>"
     ]
 }, {
     "id": 15,
@@ -146,7 +160,8 @@
         "<ul>",
         "<ol>",
         "<nl>",
-        "<list>"
+        "<list>",
+        "<ordered>"
     ]
 }, {
     "id": 16,
@@ -156,7 +171,8 @@
         "<bl>",
         "<ul>",
         "<list>",
-        "<ol>"
+        "<ol>",
+        "<ordered>"
     ]
 }, {
     "id": 17,
@@ -166,7 +182,8 @@
         "<DOCTYPE>",
         "<VERSION>",
         "<V>",
-        "<HTML>"
+        "<HTML>",
+        "Não existe uma tag que identifica a versão do HTML"
     ]
 }, {
     "id": 18,
@@ -176,7 +193,8 @@
         "<check>",
         "<checkbox>",
         "<input type='checkbox'>",
-        "<input type='check'>"
+        "<input type='check'>",
+        "<input type='cb'>"
     ]
 }, {
     "id": 19,
@@ -186,7 +204,8 @@
         "<textinput>",
         "<textbox>",
         "<input type='text'>",
-        "<input type='textfield'>"
+        "<input type='textfield'>",
+        "<input type='textbox'>"
     ]
 }, {
     "id": 20,
@@ -196,6 +215,7 @@
         "Verdadeiro",
         "Falso",
         "Falso. Não existe uma tag <iframe>",
-        "Falso. Toda página web deve estar dentro da tag <iframe>"
+        "Falso. Toda página web deve estar dentro da tag <iframe>",
+        "Falso. Essa função é da tag <website>"
     ]
 }]

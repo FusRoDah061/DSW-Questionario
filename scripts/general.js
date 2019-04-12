@@ -66,3 +66,55 @@ window.storage = {
         }
     }
 }
+
+window.tentativas = {
+    storageKey: 'tentativas',
+
+    list: function () {
+        let tentativas = storage.get(this.storageKey);
+
+        if (!tentativas)
+            tentativas = [];
+        else
+            tentativas = JSON.parse(tentativas);
+
+        return tentativas;
+    },
+
+    get: function (id){
+        let tentativas = this.list();
+
+        return tentativas.find(t => {
+            if(t.id == id)
+                return t;
+        });
+    },
+
+    set: function (tentativas) {
+        storage.set(this.storageKey, JSON.stringify(tentativas));
+    },
+
+    push: function (tentativa) {
+        let tentativas = this.list();
+
+        tentativa.id = ((tentativas[tentativas.length - 1]) ? tentativas[tentativas.length - 1].id + 1 : tentativas.length) + 1;
+
+        tentativas.push(tentativa);
+
+        this.set(tentativas);
+    },
+
+    remove: function(id) {
+        let tentativas = this.list();
+        let indiceTentativa = tentativas.findIndex(item => {
+            return item.id == id;
+        });
+
+        tentativas.splice(indiceTentativa, 1);
+        this.set(tentativas);
+    },
+
+    clear: function (){
+        storage.set(this.storageKey, '');
+    }
+}

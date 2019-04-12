@@ -24,6 +24,7 @@ var app = {
             let alternativas = '';
 
             for (let j = 0; j < perguntas[i].alternativas.length; j++) {
+
                 alternativas += `
                     <li class="form-check">
                         <input class="form-check-input" type="radio" name="alternativas-${i}" data-pergunta="${perguntas[i].id}" id="opcao-${i}-${j}" value="${j}">
@@ -48,6 +49,22 @@ var app = {
         }
 
         $('#js-perguntas').html(html);
+
+        $('.form-check-input').change(this, function (ev) {
+            if (this.checked) {
+                let perguntaId = $(this).attr('data-pergunta');
+                let resposta = $(this).val();
+                ev.data.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
+            }
+        });
+
+        $('.pergunta').click(this, function (ev) {
+            if ($('#js-toggle-quadro').prop("checked")) {
+                let pergunta = $(this).attr('data-num-pergunta');
+                $('#js-toggle-quadro').prop("checked", false);
+                ev.data.definePerguntaAtual(parseInt(pergunta));
+            }
+        });
 
     },
 
@@ -145,8 +162,6 @@ var app = {
 
     salvarTentativa: function () {
 
-        let caller = this;
-
         Swal.fire({
             title: 'Resultado do questionário',
             html: `
@@ -154,7 +169,7 @@ var app = {
                 <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
 
                 <ul class="resultado">
-                    ${caller.perguntasSorteadas.map(function(pergunta, i) {
+                    ${this.perguntasSorteadas.map(function(pergunta, i) {
                         if (pergunta.resposta == pergunta['alternativa-correta'])
                             return `<li class="resultado--certa">${i + 1}</li>`;
                         else
@@ -181,55 +196,42 @@ var app = {
                     return acumulador;
                 };
 
-                let tentativas = storage.get('tentativas');
-
-                if (!tentativas)
-                    tentativas = [];
-                else
-                    tentativas = JSON.parse(tentativas);
-
-                tentativas.push({
-                    id: (tentativas[tentativas.length - 1]) ? tentativas[tentativas.length - 1].id + 1 : tentativas.length,
+                window.tentativas.push({
                     data: new Date().toLocaleString('en-GB').split(',').join(''),
-                    perguntas: caller.perguntasSorteadas,
-                    nota: caller.perguntasSorteadas.reduce(somadorNota, 0)
+                    perguntas: this.perguntasSorteadas,
+                    nota: this.perguntasSorteadas.reduce(somadorNota, 0)
                 });
-
-                storage.set('tentativas', JSON.stringify(tentativas));
-
             }
 
             location.href = 'index.html';
         });
-    }
+    },
 };
 
 $(document).ready(function () {
 
     verificaTentativas();
-    //TODO: verificar se não foi carregada uma tentativa
     obterPerguntas();
     inicializarEventos();
 
 });
 
 function verificaTentativas() {
-    let tentativas = storage.get('tentativas');
+    let tentativas = window.tentativas.list();
 
-    if (tentativas)
-        if (JSON.parse(tentativas).length >= 3)
-            Swal.fire({
-                title: 'Limite de tentativas alcançado',
-                text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário na página inicial para liberar esse limite.',
-                type: 'error',
-                customClass: {
-                    confirmButton: 'btn btn-primary'
-                },
-                buttonsStyling: false
-            })
-            .then(function () {
-                location.href = 'index.html';
-            });
+    if (tentativas.length >= 3)
+        Swal.fire({
+            title: 'Limite de tentativas alcançado',
+            text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário na página inicial para liberar esse limite.',
+            type: 'error',
+            customClass: {
+                confirmButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+        })
+        .then(function () {
+            location.href = 'index.html';
+        });
 }
 
 function obterPerguntas() {
@@ -240,22 +242,6 @@ function obterPerguntas() {
 
             app.apresentaPerguntas(app.perguntasSorteadas);
             app.definePerguntaAtual(app.perguntaAtual);
-
-            $('.form-check-input').change(function () {
-                if (this.checked) {
-                    let perguntaId = $(this).attr('data-pergunta');
-                    let resposta = $(this).val();
-                    app.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
-                }
-            });
-
-            $('.pergunta').click(function () {
-                if ($('#js-toggle-quadro').prop("checked")) {
-                    let pergunta = $(this).attr('data-num-pergunta');
-                    $('#js-toggle-quadro').prop("checked", false);
-                    app.definePerguntaAtual(parseInt(pergunta));
-                }
-            });
         },
         function (jqXHR, textStatus, errorThrown) {
             //TODO: exibir mensagem de erro.

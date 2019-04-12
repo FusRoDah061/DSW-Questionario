@@ -129,12 +129,12 @@ body {
   height: 100%;
 }
 
-.tentativas .lista-tentativas li div a {
+.tentativas .lista-tentativas li div p {
   width: 100%;
   display: block;
 }
 
-.tentativas .lista-tentativas li div a, .tentativas .lista-tentativas li div .nota, .tentativas .lista-tentativas li div .data {
+.tentativas .lista-tentativas li div p, .tentativas .lista-tentativas li div .nota, .tentativas .lista-tentativas li div .data {
   margin: 0px;
   font-size: 10pt;
 }
@@ -230,4 +230,3 @@ h2 {
   font-size: 50pt;
   font-weight: bold;
 }
-/*# sourceMappingURL=index.css.map */

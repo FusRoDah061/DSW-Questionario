@@ -3,12 +3,7 @@ var app = {
     tentativas: [],
 
     carregarTentativas: function () {
-        let tentativas = storage.get('tentativas');
-
-        if(tentativas)
-            this.tentativas = JSON.parse(tentativas);
-        else
-            this.tentativas = [];
+        this.tentativas = window.tentativas.list();
 
         if(this.tentativas.length > 0){
 
@@ -16,9 +11,9 @@ var app = {
             for(let i = 0; i < this.tentativas.length; i++) {
                 $('#js-tentativas-passadas').append(`
                 <li>
-                    <button class="lista-btn-rm" data-tentativa="${i}"><i class="icon ion-md-trash"></i></button>
+                    <button class="lista-btn-rm" data-tentativa="${this.tentativas[i].id}"><i class="icon ion-md-trash"></i></button>
                     <div>
-                        <a href="responder.html?t=${this.tentativas[i].id}">Tentativa #${this.tentativas[i].id + 1}</a>
+                        <p>Tentativa #${this.tentativas[i].id}</p>
                         <p class="nota">Nota: ${this.tentativas[i].nota}</p>
                         <p class="data">${this.tentativas[i].data}</p>
                     </div>
@@ -27,7 +22,7 @@ var app = {
             }
 
             $('.lista-btn-rm').click(this, function (event){
-                let indiceTentativa = parseInt($(this).attr('data-tentativa'));
+                let idTentativa = parseInt($(this).attr('data-tentativa'));
                 let caller = event.data;
 
                 Swal.fire({
@@ -46,8 +41,7 @@ var app = {
                 })
                 .then((result) => {
                     if (result.value) {
-                        caller.tentativas.splice(indiceTentativa, 1);
-                        storage.set('tentativas', JSON.stringify(caller.tentativas));
+                        window.tentativas.remove(idTentativa);
                         caller.carregarTentativas();
                     }
                 })
@@ -108,7 +102,7 @@ var app = {
 
     limparTentativas: function (){
         this.tentativas = [];
-        storage.set('tentativas', '');
+        window.tentativas.clear();
 
         $('#js-tentativas').hide(100);
         $('#js-avaliacao').hide(100);

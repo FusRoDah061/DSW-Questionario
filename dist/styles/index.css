@@ -58,11 +58,14 @@ body {
 }
 
 .app-content {
-  position: relative;
+  position: absolute;
   display: block;
   width: 100%;
-  min-height: 100%;
-  height: 100%;
+  top: 50%;
+  left: 0;
+  margin: auto;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .tentativas {
@@ -126,12 +129,12 @@ body {
   height: 100%;
 }
 
-.tentativas .lista-tentativas li div a {
+.tentativas .lista-tentativas li div p {
   width: 100%;
   display: block;
 }
 
-.tentativas .lista-tentativas li div a, .tentativas .lista-tentativas li div .nota, .tentativas .lista-tentativas li div .data {
+.tentativas .lista-tentativas li div p, .tentativas .lista-tentativas li div .nota, .tentativas .lista-tentativas li div .data {
   margin: 0px;
   font-size: 10pt;
 }
@@ -197,8 +200,8 @@ h2 {
   display: block;
   position: relative;
   margin: 15px auto;
-  padding: 6px 30px;
-  width: 300px;
+  padding: 6px 35px;
+  width: 320px;
 }
 
 #js-btn-inicia .icon {
@@ -209,14 +212,21 @@ h2 {
   opacity: 0;
   -webkit-transition: .4s;
   transition: .4s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
   font-size: 18pt;
 }
 
 #js-btn-inicia:hover .icon {
   opacity: 1;
-  left: 250px;
+  left: 280px;
 }
 
 .avaliacao {
   display: none;
+}
+
+.nota {
+  font-size: 50pt;
+  font-weight: bold;
 }
