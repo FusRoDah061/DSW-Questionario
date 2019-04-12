@@ -73,7 +73,7 @@ var app = {
                 notaFinal = this.tentativas[0].nota;
 
                 this.tentativas.forEach(element => {
-                    if(element.nota > notaFinal) 
+                    if(element.nota > notaFinal)
                         notaFinal = element.nota;
                 });
             break;
@@ -102,14 +102,14 @@ var app = {
             },
             buttonsStyling: false
         })
-        .then(this.limparTentativas);
+        .then(this.limparTentativas.bind(this));
 
     },
 
     limparTentativas: function (){
         this.tentativas = [];
         storage.set('tentativas', '');
-        
+
         $('#js-tentativas').hide(100);
         $('#js-avaliacao').hide(100);
     }
