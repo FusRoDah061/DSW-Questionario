@@ -181,10 +181,12 @@ var app = {
                     return acumulador;
                 };
 
-                let tentativas = JSON.parse(storage.get('tentativas'));
+                let tentativas = storage.get('tentativas');
 
                 if (!tentativas)
                     tentativas = [];
+                else   
+                    tentativas = JSON.parse(tentativas);
 
                 tentativas.push({
                     id: (tentativas[tentativas.length - 1]) ? tentativas[tentativas.length - 1].id + 1 : tentativas.length,

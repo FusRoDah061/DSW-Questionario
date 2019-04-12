@@ -15,8 +15,8 @@ h2 {
    display: block;
    position: relative;
    margin: 15px auto;
-   padding: 6px 30px;
-   width: 300px;
+   padding: 6px 35px;
+   width: 320px;
 
    .icon {
       position: absolute;
@@ -25,12 +25,13 @@ h2 {
       color: white;
       opacity: 0;
       transition: .4s;
+      transition-timing-function: ease-in-out;
       font-size: 18pt;
    }
 
    &:hover .icon {
       opacity: 1;
-      left: 250px;
+      left: 280px;
    }
 }
 

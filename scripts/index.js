@@ -4,17 +4,16 @@ var app = {
 
     carregarTentativas: function () {
         let tentativas = storage.get('tentativas');
-        this.tentativas = JSON.parse(tentativas);
 
-        if(!this.tentativas)
+        if(tentativas)
+            this.tentativas = JSON.parse(tentativas);
+        else
             this.tentativas = [];
 
         if(this.tentativas.length > 0){
 
             $('#js-tentativas-passadas').html('');
             for(let i = 0; i < this.tentativas.length; i++) {
-                console.log(this.tentativas[i]);
-
                 $('#js-tentativas-passadas').append(`
                 <li>
                     <button class="lista-btn-rm" data-tentativa="${i}"><i class="icon ion-md-trash"></i></button>
@@ -33,8 +32,8 @@ var app = {
 
                 Swal.fire({
                     title: 'Remover tentativa?',
-                    text: 'tem certeza de que deseja remover a tentativa? Essa ação não pode ser revertida.',
-                    type: 'error',
+                    text: 'Tem certeza de que deseja remover a tentativa? Essa ação não pode ser revertida.',
+                    type: 'question',
                     customClass: {
                         confirmButton: 'btn btn-block btn-success',
                         cancelButton: 'btn btn-block btn-danger'
@@ -90,7 +89,6 @@ var app = {
             break;
         }
 
-        console.log(notaFinal);
         Swal.fire({
             title: 'Resultado final',
             html: `
@@ -104,14 +102,16 @@ var app = {
             },
             buttonsStyling: false
         })
-        .then(function () {
-
-        });
+        .then(this.limparTentativas);
 
     },
 
     limparTentativas: function (){
+        this.tentativas = [];
+        storage.set('tentativas', '');
         
+        $('#js-tentativas').hide(100);
+        $('#js-avaliacao').hide(100);
     }
 }
 
@@ -140,14 +140,36 @@ function inicializaEventos (){
     });
 
     $('#js-avaliar-maior-nota').click(function () {
-        app.avaliar('maior');
+        avaliar('maior');
     });
 
     $('#js-avaliar-media-notas').click(function () {
-        app.avaliar('media');
+        avaliar('media');
     });
 
     $('#js-avaliar-ultima-nota').click(function () {
-        app.avaliar('ultima');
+        avaliar('ultima');
     });
+}
+
+function avaliar(metodo) {
+    Swal.fire({
+        title: 'Finalizar questionário?',
+        text: 'Finalizar e avaliar questionário? Suas tentativas serão apagadas após a avaliação.',
+        type: 'question',
+        customClass: {
+            confirmButton: 'btn btn-block btn-success',
+            cancelButton: 'btn btn-block btn-danger'
+        },
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não, cancelar',
+        reverseButtons: true
+    })
+    .then((result) => {
+        if (result.value) {
+            app.avaliar(metodo);
+        }
+    })
 }

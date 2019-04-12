@@ -200,8 +200,8 @@ h2 {
   display: block;
   position: relative;
   margin: 15px auto;
-  padding: 6px 30px;
-  width: 300px;
+  padding: 6px 35px;
+  width: 320px;
 }
 
 #js-btn-inicia .icon {
@@ -212,12 +212,14 @@ h2 {
   opacity: 0;
   -webkit-transition: .4s;
   transition: .4s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
   font-size: 18pt;
 }
 
 #js-btn-inicia:hover .icon {
   opacity: 1;
-  left: 250px;
+  left: 280px;
 }
 
 .avaliacao {
