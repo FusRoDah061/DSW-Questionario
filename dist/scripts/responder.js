@@ -71,36 +71,39 @@ var app = {
     definePerguntaAtual: function (numero) {
         let pergunta = $('#js-perguntas').children().eq(numero - 1);
 
-        for (let elem of $('.pergunta--ativa, .pergunta--esq, .pergunta--dir')) {
-            $(elem).removeClass('pergunta--ativa');
-            $(elem).removeClass('pergunta--esq');
-            $(elem).removeClass('pergunta--dir');
-        }
+        let proxima = pergunta.next();
+        let anterior = pergunta.prev();
+        let classesToRemove = 'pergunta--ativa pergunta-esq pergunta-dir pergunta-dir--esconde pergunta-esq--esconde';
 
-        pergunta.addClass('pergunta--ativa');
+        $(pergunta).removeClass(classesToRemove).addClass('pergunta--ativa');
+
+        $(anterior).removeClass(classesToRemove).addClass('pergunta-esq');
+        $(proxima).removeClass(classesToRemove).addClass('pergunta-dir');
+
+        $(proxima).nextAll().removeClass(classesToRemove).addClass('pergunta-dir--esconde');
+        $(anterior).prevAll().removeClass(classesToRemove).addClass('pergunta-esq--esconde');
 
         if (numero > 1) {
             let perguntaAnterior = $('#js-perguntas').children().eq(numero - 2);
-            perguntaAnterior.addClass('pergunta--esq');
+            perguntaAnterior.addClass('pergunta-esq');
 
             perguntaAnterior.click(this, function (event) {
-                if ($(this).hasClass('pergunta--esq'))
+                if ($(this).hasClass('pergunta-esq'))
                     event.data.perguntaAnterior();
             });
         }
 
         if (numero < 10) {
             let proximaPergunta = $('#js-perguntas').children().eq(numero);
-            proximaPergunta.addClass('pergunta--dir');
+            proximaPergunta.addClass('pergunta-dir');
 
             proximaPergunta.click(this, function (event) {
-                if ($(this).hasClass('pergunta--dir'))
+                if ($(this).hasClass('pergunta-dir'))
                     event.data.proximaPergunta();
             });
 
             $('#js-proxima-pergunta').html('Próxima');
-        }
-        else if(numero >= 10) {
+        } else if (numero >= 10) {
             $('#js-proxima-pergunta').html('Finalizar');
         }
 
@@ -163,8 +166,8 @@ var app = {
     salvarTentativa: function () {
 
         Swal.fire({
-            title: 'Resultado do questionário',
-            html: `
+                title: 'Resultado do questionário',
+                html: `
                 <p>Perguntas em <span style="color: #2f9e41">VERDE</span> estão corretas.</p>
                 <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
 
@@ -177,34 +180,34 @@ var app = {
                     }).join(' ')}
                 </ul>
             `,
-            type: 'info',
-            customClass: {
-                confirmButton: 'btn btn-block btn-success',
-                cancelButton: 'btn btn-block btn-danger'
-            },
-            buttonsStyling: false,
-            showCancelButton: true,
-            confirmButtonText: 'Concluir',
-            cancelButtonText: 'Descartar tentativa'
-        })
-        .then((result) => {
-            if (result.value) {
-                let somadorNota = function (acumulador, pergunta) {
-                    if (pergunta.resposta == pergunta['alternativa-correta'])
-                        acumulador += 1;
+                type: 'info',
+                customClass: {
+                    confirmButton: 'btn btn-block btn-success',
+                    cancelButton: 'btn btn-block btn-danger'
+                },
+                buttonsStyling: false,
+                showCancelButton: true,
+                confirmButtonText: 'Concluir',
+                cancelButtonText: 'Descartar tentativa'
+            })
+            .then((result) => {
+                if (result.value) {
+                    let somadorNota = function (acumulador, pergunta) {
+                        if (pergunta.resposta == pergunta['alternativa-correta'])
+                            acumulador += 1;
 
-                    return acumulador;
-                };
+                        return acumulador;
+                    };
 
-                window.tentativas.push({
-                    data: new Date().toLocaleString('en-GB').split(',').join(''),
-                    perguntas: this.perguntasSorteadas,
-                    nota: this.perguntasSorteadas.reduce(somadorNota, 0)
-                });
-            }
+                    window.tentativas.push({
+                        data: new Date().toLocaleString('en-GB').split(',').join(''),
+                        perguntas: this.perguntasSorteadas,
+                        nota: this.perguntasSorteadas.reduce(somadorNota, 0)
+                    });
+                }
 
-            location.href = 'index.html';
-        });
+                location.href = 'index.html';
+            });
     },
 };
 
