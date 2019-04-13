@@ -1,6 +1,3 @@
-$altura-li: 40px;
-$btn-rm-cor: rgba(0, 0, 0, .08);
-
 .tentativas {
    display: none;
 
@@ -12,18 +9,18 @@ $btn-rm-cor: rgba(0, 0, 0, .08);
          position: relative;
          display: block;
          list-style: none;
-         height: $altura-li;
+         height: var(--altura-li-tentativas);
          border-radius: 6px;
          box-shadow: var(--box-shadow);
          margin: 5px;
 
          .lista-btn-rm {
             position: absolute;
-            width: $altura-li;
-            height: $altura-li;
+            width: var(--altura-li-tentativas);
+            height: var(--altura-li-tentativas);
             top: 0;
             left: 0;
-            background-color: $btn-rm-cor;
+            background-color: var(--btn-rm-cor-tentativas);
             border: none;
             border-top-left-radius: 6px;
             border-bottom-left-radius: 6px;
@@ -31,10 +28,10 @@ $btn-rm-cor: rgba(0, 0, 0, .08);
 
             .icon {
                display: block;
-               width: $altura-li;
-               height: $altura-li;
+               width: var(--altura-li-tentativas);
+               height: var(--altura-li-tentativas);
                opacity: 1;
-               line-height: $altura-li;
+               line-height: var(--altura-li-tentativas);
                font-size: 12pt;
                transition: .2s;
             }
@@ -48,7 +45,7 @@ $btn-rm-cor: rgba(0, 0, 0, .08);
          }
 
          div {
-            margin-left: $altura-li;
+            margin-left: var(--altura-li-tentativas);
             padding: 3px 10px;
             height: 100%;
 
@@ -79,7 +76,7 @@ $btn-rm-cor: rgba(0, 0, 0, .08);
          }
 
          ion-icon.open {
-            line-height: $altura-li;
+            line-height: var(--altura-li-tentativas);
          }
       }
    }

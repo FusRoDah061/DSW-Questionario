@@ -1,4 +1,20 @@
 .visao-quadro {
+   display: none;
+}
+
+.visao-quadro-label {
+   cursor: pointer;
+   margin: 15px auto 25px auto;
+   display: block;
+   width: 20vw;
+   min-width: 150px;
+}
+
+.visao-quadro-label:hover .icon {
+   color: white;
+}
+
+.visao-quadro {
    &:checked+.visao-quadro-label {
       background-color: #343a40;
       color: white;

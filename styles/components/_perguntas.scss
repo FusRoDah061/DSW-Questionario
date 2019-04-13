@@ -1,0 +1,50 @@
+.perguntas {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 300px;
+    margin: 0;
+
+    .pergunta {
+       padding: 15px 25px;
+       background-color: white;
+       transition: .15s;
+       list-style: none;
+       border-radius: 3px;
+
+       .enunciado {
+          font-size: 12pt;
+          text-align: justify;
+          margin: 0;
+
+          span {
+             font-weight: bold;
+          }
+       }
+
+       .alternativas {
+          margin-top: 10px;
+
+          .form-check {
+             margin: 5px 0px;
+
+             .form-check-label {
+                font-size: 10pt;
+
+                span {
+                   font-weight: bold;
+                }
+             }
+          }
+       }
+    }
+}
+
+.btns-navegacao {
+    display: block;
+    margin: 30px auto 10px auto;
+    width: fit-content;
+}
+
+@import 'perguntas/perguntas-sequencia';
+@import 'perguntas/perguntas-quadro';

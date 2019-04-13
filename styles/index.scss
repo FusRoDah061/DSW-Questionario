@@ -1,5 +1,8 @@
-@import 'general';
-@import 'lista-tentativas';
+@import 'abstracts/variaveis';
+
+@import 'base/geral';
+
+@import 'components/lista-tentativas';
 
 .content {
    width: 30vw;
