@@ -51,10 +51,6 @@
          color: white;
       }
 
-      /*
-         Inpiração da animação dos indicadores:
-         https://codepen.io/aralon/pen/gpaMRd
-      */
       &--marcado::before {
          transform: scale(1);
          background-color: #007bff;
