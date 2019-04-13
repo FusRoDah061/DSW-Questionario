@@ -179,9 +179,9 @@
     "enunciado": "Qual tag identifica a versão do HTML utilizada?",
     "alternativa-correta": 0,
     "alternativas": [
-        "<DOCTYPE>",
-        "<VERSION>",
-        "<V>",
+        "<!DOCTYPE>",
+        "<!VERSION>",
+        "<!V>",
         "<HTML>",
         "Não existe uma tag que identifica a versão do HTML"
     ]
@@ -217,5 +217,335 @@
         "Falso. Não existe uma tag <iframe>",
         "Falso. Toda página web deve estar dentro da tag <iframe>",
         "Falso. Essa função é da tag <website>"
+    ]
+}, {
+    "id": 21,
+    "enunciado": "Qual o significado da sigla CSS?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "Cascading Style Sheets",
+        "Creative Style Sheets",
+        "Computer Style Sheets",
+        "Colorful Style Sheets",
+        "Common Style Sheets"
+    ]
+}, {
+    "id": 22,
+    "enunciado": "Qual a maneira correta de referenciar um arquivo CSS pelo HTML?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "<style src='style.css'>",
+        "<stylesheet>style.css</stylesheet>",
+        "<link rel='stylesheet' href='style.css'/>",
+        "<link rel='stylesheet' src='style.css'/>",
+        "<link rel='css' href='style.css'/>"
+    ]
+}, {
+    "id": 23,
+    "enunciado": "Qual o local correto para inserir o estilo CSS?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "Dentro da tag <head>",
+        "Dentro da tag <body>",
+        "No fim do documento",
+        "Tanto na tag <head> quanto na tag <body>",
+        "Dentro da tag <html>"
+    ]
+}, {
+    "id": 24,
+    "enunciado": "Qual tag HTML define uma seção de estilos CSS?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "<style>",
+        "<css>",
+        "<script>",
+        "<stylesheet>",
+        "<styles>"
+    ]
+}, {
+    "id": 25,
+    "enunciado": "Qual atributo HTML define os estilos CSS de um elemento?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "style",
+        "class",
+        "font",
+        "styles",
+        "css"
+    ]
+}, {
+    "id": 26,
+    "enunciado": "Qual é a sintaxe CSS correta?",
+    "alternativa-correta": 3,
+    "alternativas": [
+        "{ body: color = black }",
+        "body: color = black",
+        "{ body; color: black; }",
+        "body { color: black; }",
+        "body { color = black; }"
+    ]
+}, {
+    "id": 27,
+    "enunciado": "Como são definidos comentários CSS?",
+    "alternativa-correta": 4,
+    "alternativas": [
+        "'Este é um comentário",
+        "<!--Este é um comentário-->",
+        "//Este é um comentário",
+        "--Este é um comentário",
+        "/* Este é um comentário */"
+    ]
+}, {
+    "id": 28,
+    "enunciado": "Qual propriedade CSS altera a cor de fundo de um elemento HTML?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "color",
+        "bgcolor",
+        "background-color",
+        "bg-color",
+        "paint"
+    ]
+}, {
+    "id": 29,
+    "enunciado": "Qual propriedade CSS altera a cor do texto de um elemento HTML?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "color",
+        "letter-color",
+        "text-color",
+        "fg-color",
+        "font-color"
+    ]
+}, {
+    "id": 30,
+    "enunciado": "Qual propriedade CSS controla o tamanho do texto de um elemento HTML?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "text-size",
+        "font-size",
+        "font-style",
+        "text-style",
+        "line-height"
+    ]
+}, {
+    "id": 31,
+    "enunciado": "Como fazer o texto de cada palavra em um texto ficar com a letra inicial em maiúsculo com CSS?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "text-transform: capitalize",
+        "transform: capitalize",
+        "text-style: capitalize",
+        "Não é possível fazer isso em CSS",
+        "word-transform: capitalize"
+    ]
+}, {
+    "id": 32,
+    "enunciado": "Qual propriedade CSS é usada para alterar a fonte do texto de um elemento HTML?",
+    "alternativa-correta": 4,
+    "alternativas": [
+        "fontface",
+        "font-weight",
+        "font",
+        "font-style",
+        "font-family"
+    ]
+}, {
+    "id": 33,
+    "enunciado": "Como selecionar um elemento HTML com id 'foo' em CSS?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "#foo",
+        ".foo",
+        "foo",
+        "id:foo",
+        "*foo"
+    ]
+}, {
+    "id": 34,
+    "enunciado": "Como selecionar um elemento HTML com classe 'bar' em CSS?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "#bar",
+        ".bar",
+        "bar",
+        "class:bar",
+        "*bar"
+    ]
+}, {
+    "id": 35,
+    "enunciado": "Qual tag HTML define o título da página?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "<head>",
+        "<page-title>",
+        "<title>",
+        "<meta>",
+        "<DOCTYPE>"
+    ]
+}, {
+    "id": 36,
+    "enunciado": "Qual o doctype que identifica o HTML5?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 5.0//EN' 'http://www..w3.org/TR/html5/strict.dtd'>",
+        "<!DOCTYPE HTML5>",
+        "<!DOCTYPE html>",
+        "<!DOCTYPE HTML '-V5'>",
+        "<!DOCTYPE html version='5'>"
+    ]
+}, {
+    "id": 37,
+    "enunciado": "Em HTML, onblur e onfocus são:",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "Atributos de eventos",
+        "Atributos de estilo",
+        "Elementos HTML",
+        "Seletores CSS",
+        "Atributos de validação"
+    ]
+}, {
+    "id": 38,
+    "enunciado": "Qual a forma correta de criar vetores JavaScript?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "var cores = 1 = ('vermelho'), 2 = ('verde'), 3 = ('azul')",
+        "var cores = 'vermelho', 'verde', 'azul'",
+        "var cores = ['vermelho', 'verde', 'azul']",
+        "var cores = (1:'vermelho', 2:'verde', 3:'azul')",
+        "var cores = {1:'vermelho', 2:'verde', 3:'azul'}"
+    ]
+}, {
+    "id": 39,
+    "enunciado": "Qual evento JavaScript é disparado quando o usuário clica em um elemento HTML?",
+    "alternativa-correta": 3,
+    "alternativas": [
+        "onpress",
+        "onmouseover",
+        "onmouseclick",
+        "onclick",
+        "onchange"
+    ]
+}, {
+    "id": 40,
+    "enunciado": "Como são declaradas variáveis JavaScript?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "var variavel;",
+        "def variavel",
+        "variavel",
+        "int variavel",
+        "$variavel"
+    ]
+}, {
+    "id": 41,
+    "enunciado": "Qual o símbolo usado para acessar funções jQuery?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "?",
+        "$",
+        "%",
+        "&",
+        "Não existe um sinal para jQuery"
+    ]
+}, {
+    "id": 42,
+    "enunciado": "Como mudar a cor de fundo de todos os elementos <p> com jQuery?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        "$('p').manipulate('background-color', 'red');",
+        "$('p').css('background-color', 'red');",
+        "$('p').style('background-color', 'red');",
+        "$('p').layout('background-color', 'red');",
+        "Não é possível alterar estilos com jQuery"
+    ]
+}, {
+    "id": 43,
+    "enunciado": "Com jQuery, o que o seletor $('div.intro') seleciona?",
+    "alternativa-correta": 3,
+    "alternativas": [
+        "Todos os elementos div com id 'intro'",
+        "O primeiro elemento div com a classe 'intro'",
+        "Todo os elementos com a classe 'intro' que são filhos de um elemento div",
+        "Todos os elementos div com a classe 'intro'",
+        "O primeiro elemento div com id 'intro'"
+    ]
+}, {
+    "id": 44,
+    "enunciado": "Qual método jQuery é usado para esconder elementos HTML?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        "display(none)",
+        "visible(false)",
+        "hide()",
+        "hidden()",
+        "visibility(hidden)"
+    ]
+}, {
+    "id": 45,
+    "enunciado": "Qual método jQuery é usado para definir um ou mais estilos CSS em elementos HTML?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        "css()",
+        "style()",
+        "attr()",
+        "html()",
+        "stylesheet()"
+    ]
+}, {
+    "id": 46,
+    "enunciado": "No Bootstrap, qual classe define um container que ocupa toda a largura da janela?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        ".container-fluid",
+        ".container-fixed",
+        ".container",
+        ".container-full-width",
+        ".container-big"
+    ]
+}, {
+    "id": 47,
+    "enunciado": "O sistema de grade do Bootstrap é baseado em quantas colunas?",
+    "alternativa-correta": 3,
+    "alternativas": [
+        "6",
+        "3",
+        "9",
+        "12",
+        "10"
+    ]
+}, {
+    "id": 48,
+    "enunciado": "Qual classe Bootstrap torna uma tabela listrada (zebra)?",
+    "alternativa-correta": 2,
+    "alternativas": [
+        ".table-zebra",
+        ".even e .odd",
+        ".table-striped",
+        ".table-bordered",
+        ".table-alternate"
+    ]
+}, {
+    "id": 49,
+    "enunciado": "Qual classe Bootstrap é utilizada para criar um caixa grande para chamar mais atenção?",
+    "alternativa-correta": 0,
+    "alternativas": [
+        ".jumbotron",
+        ".container",
+        ".bigbox",
+        ".container-featured",
+        ".container-highlight"
+    ]
+}, {
+    "id": 50,
+    "enunciado": "No Bootstrap, qual classe define um container de tamanho fixo?",
+    "alternativa-correta": 1,
+    "alternativas": [
+        ".container-fluid",
+        ".container-fixed",
+        ".container",
+        ".container-full-width",
+        ".container-big"
     ]
 }]
