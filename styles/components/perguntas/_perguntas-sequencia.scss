@@ -1,7 +1,4 @@
 .visao-quadro:not(:checked)~.perguntas {
-
-   margin: 40px 0px;
-
    .pergunta {
       position: absolute;
       height: 100%;
@@ -17,6 +14,10 @@
          display: block;
          opacity: 1;
          cursor: pointer;
+         animation-name: slide-up;
+         animation-duration: .3s;
+         animation-fill-mode: forwards;
+         animation-timing-function: ease-in-out;
       }
 
       &--ativa {
@@ -41,6 +42,7 @@
       &-esq {
          left: 30%;
          transform: translateX(-50%) scale(.5);
+         animation-duration: .4s;
 
          &--esconde {
             left: 0%;
@@ -52,6 +54,7 @@
       &-dir {
          left: 70%;
          transform: translateX(-50%) scale(.7);
+         animation-duration: .5s;
 
          &--esconde {
             left: 100%;
@@ -60,5 +63,15 @@
          }
       }
 
+   }
+}
+
+@keyframes slide-up {
+   from {
+      margin-top: 30px;
+   }
+
+   to {
+      margin-top: 0px;
    }
 }

@@ -169,7 +169,8 @@ body {
   display: block;
   width: 100%;
   height: 300px;
-  margin: 0;
+  min-height: 300px;
+  margin: 40px 0px;
 }
 
 .perguntas .pergunta {
@@ -215,10 +216,6 @@ body {
   width: fit-content;
 }
 
-.visao-quadro:not(:checked) ~ .perguntas {
-  margin: 40px 0px;
-}
-
 .visao-quadro:not(:checked) ~ .perguntas .pergunta {
   position: absolute;
   height: 100%;
@@ -237,6 +234,14 @@ body {
   display: block;
   opacity: 1;
   cursor: pointer;
+  -webkit-animation-name: slide-up;
+          animation-name: slide-up;
+  -webkit-animation-duration: .3s;
+          animation-duration: .3s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
 }
 
 .visao-quadro:not(:checked) ~ .perguntas .pergunta--ativa {
@@ -263,6 +268,8 @@ body {
   left: 30%;
   -webkit-transform: translateX(-50%) scale(0.5);
           transform: translateX(-50%) scale(0.5);
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
 }
 
 .visao-quadro:not(:checked) ~ .perguntas .pergunta-esq--esconde {
@@ -276,6 +283,8 @@ body {
   left: 70%;
   -webkit-transform: translateX(-50%) scale(0.7);
           transform: translateX(-50%) scale(0.7);
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
 }
 
 .visao-quadro:not(:checked) ~ .perguntas .pergunta-dir--esconde {
@@ -283,6 +292,24 @@ body {
   opacity: 0;
   -webkit-transform: translateY(50%) translateX(-50%);
           transform: translateY(50%) translateX(-50%);
+}
+
+@-webkit-keyframes slide-up {
+  from {
+    margin-top: 30px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    margin-top: 30px;
+  }
+  to {
+    margin-top: 0px;
+  }
 }
 
 .visao-quadro {
@@ -339,8 +366,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(1) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -350,8 +377,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(2) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -361,8 +388,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(3) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -372,8 +399,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(4) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -383,8 +410,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(5) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -394,8 +421,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(6) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -405,8 +432,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(7) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -416,8 +443,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(8) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -427,8 +454,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(9) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -438,8 +465,8 @@ body {
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta:nth-child(10) {
-  -webkit-animation-name: slide;
-          animation-name: slide;
+  -webkit-animation-name: slide-down;
+          animation-name: slide-down;
   -webkit-animation-duration: .4s;
           animation-duration: .4s;
   -webkit-animation-fill-mode: forwards;
@@ -508,7 +535,7 @@ body {
   font-size: 6pt;
 }
 
-@-webkit-keyframes slide {
+@-webkit-keyframes slide-down {
   from {
     -webkit-transform: translateY(-20px);
             transform: translateY(-20px);
@@ -521,7 +548,7 @@ body {
   }
 }
 
-@keyframes slide {
+@keyframes slide-down {
   from {
     -webkit-transform: translateY(-20px);
             transform: translateY(-20px);
