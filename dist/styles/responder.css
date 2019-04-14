@@ -621,3 +621,9 @@ header .app-title .ifsp span::before {
   width: 6px;
   height: 6px;
 }
+
+.erro strong {
+  display: block;
+  font-weight: bold;
+  font-size: 14pt;
+}

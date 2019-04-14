@@ -247,7 +247,33 @@ function obterPerguntas() {
             app.definePerguntaAtual(app.perguntaAtual);
         },
         function (jqXHR, textStatus, errorThrown) {
-            //TODO: exibir mensagem de erro.
+            Swal.fire({
+                title: 'Ops!',
+                html: `
+                    <p class="erro">
+                        Algo deu errado ao buscar as perguntas, e...
+                        <strong>sem perguntas, sem questionário &#128553;</strong>
+                    </p>
+
+                    <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#erro-detalhes" aria-expanded="false" aria-controls="erro-detalhes">
+                        Mostrar detalhes
+                    </button>
+
+                    <div class="collapse" id="erro-detalhes">
+                        <div class="card card-body">
+                            ${errorThrown}: ${jqXHR.responseText}
+                        </div>
+                    </div>
+                `,
+                type: 'error',
+                customClass: {
+                    confirmButton: 'btn btn-primary'
+                },
+                buttonsStyling: false
+            })
+            .then(function () {
+                location.href = 'index.html';
+            });
         }
     );
 }
