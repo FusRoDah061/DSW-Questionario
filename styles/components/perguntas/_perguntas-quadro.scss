@@ -36,14 +36,23 @@
       .pergunta {
          position: relative;
          display: block;
-         opacity: 1;
+         transition: 0s;
          box-shadow: var(--box-shadow-pergunta);
          border-radius: 5px;
          font-size: 9pt;
          height: 85px;
          padding: 10px 15px;
          cursor: pointer;
+         opacity: 0;
 
+         @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+               animation-name: slide;
+               animation-duration: .4s;
+               animation-fill-mode: forwards;
+               animation-delay: .05s * $i;
+            }
+         }
 
          &::after {
             content: 'ATUAL';
@@ -107,5 +116,17 @@
             font-size: 6pt;
          }
       }
+   }
+}
+
+@keyframes slide {
+   from {
+      transform: translateY(-20px);
+      opacity: 0;
+   }
+
+   to {
+      transform: translateY(0px);
+      opacity: 1;
    }
 }

@@ -326,7 +326,8 @@ body {
 .visao-quadro:checked ~ .perguntas .pergunta {
   position: relative;
   display: block;
-  opacity: 1;
+  -webkit-transition: 0s;
+  transition: 0s;
   -webkit-box-shadow: var(--box-shadow-pergunta);
           box-shadow: var(--box-shadow-pergunta);
   border-radius: 5px;
@@ -334,6 +335,117 @@ body {
   height: 85px;
   padding: 10px 15px;
   cursor: pointer;
+  opacity: 0;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(1) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.05s;
+          animation-delay: 0.05s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(2) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(3) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(4) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(5) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(6) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(7) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(8) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(9) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta:nth-child(10) {
+  -webkit-animation-name: slide;
+          animation-name: slide;
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta::after {
@@ -394,6 +506,32 @@ body {
   color: white;
   line-height: 15px;
   font-size: 6pt;
+}
+
+@-webkit-keyframes slide {
+  from {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  from {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 .resultado {
