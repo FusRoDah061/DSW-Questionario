@@ -44,22 +44,32 @@
          padding: 10px 15px;
          cursor: pointer;
 
+
+         &::after {
+            content: 'ATUAL';
+            position: absolute;
+            text-transform: capitalize;
+            right: 15px;
+            top: -20px;
+            width: 65px;
+            height: 15px;
+            background-color: #00cc00;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            line-height: 15px;
+            font-size: 6pt;
+            transition: .2s;
+            transition-timing-function: ease-in-out;
+            opacity: 0;
+         }
+
          &--ativa {
             &::after {
                content: 'ATUAL';
-               position: absolute;
-               text-transform: capitalize;
-               right: 15px;
-               top: -6px;
-               width: 65px;
-               height: 15px;
-               background-color: #00cc00;
-               border-radius: 15px;
-               text-align: center;
-               font-weight: bold;
-               color: white;
-               line-height: 15px;
-               font-size: 6pt;
+               top: -7px;
+               opacity: 1;
             }
          }
 
@@ -85,7 +95,7 @@
             position: absolute;
             text-transform: capitalize;
             left: 15px;
-            top: -6px;
+            top: -7px;
             width: 65px;
             height: 15px;
             background-color: #007bff;

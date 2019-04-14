@@ -336,12 +336,12 @@ body {
   cursor: pointer;
 }
 
-.visao-quadro:checked ~ .perguntas .pergunta--ativa::after {
+.visao-quadro:checked ~ .perguntas .pergunta::after {
   content: 'ATUAL';
   position: absolute;
   text-transform: capitalize;
   right: 15px;
-  top: -6px;
+  top: -20px;
   width: 65px;
   height: 15px;
   background-color: #00cc00;
@@ -351,6 +351,17 @@ body {
   color: white;
   line-height: 15px;
   font-size: 6pt;
+  -webkit-transition: .2s;
+  transition: .2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  opacity: 0;
+}
+
+.visao-quadro:checked ~ .perguntas .pergunta--ativa::after {
+  content: 'ATUAL';
+  top: -7px;
+  opacity: 1;
 }
 
 .visao-quadro:checked ~ .perguntas .pergunta .enunciado {
@@ -373,7 +384,7 @@ body {
   position: absolute;
   text-transform: capitalize;
   left: 15px;
-  top: -6px;
+  top: -7px;
   width: 65px;
   height: 15px;
   background-color: #007bff;
