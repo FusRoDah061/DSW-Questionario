@@ -19,6 +19,30 @@ String.prototype.encodeHtml = function () {
     });
 }
 
+HTMLElement.prototype.nextSiblings = function() {
+    let nextSiblings = [];
+    let ptr = this.nextElementSibling;
+
+    while(ptr){
+        nextSiblings.push(ptr.nextElementSibling);
+        ptr = ptr.nextElementSibling;
+    }
+
+    return nextSiblings;
+}
+
+HTMLElement.prototype.previousSiblings = function() {
+    let previousSiblings = [];
+    let ptr = this.previousElementSibling;
+
+    while(ptr){
+        previousSiblings.push(ptr.previousElementSibling);
+        ptr = ptr.previousElementSibling;
+    }
+
+    return previousSiblings;
+}
+
 window.cookie = {
 
     bake: function (name, value) {

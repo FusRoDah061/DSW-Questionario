@@ -1,5 +1,10 @@
 var app = {
 
+    btnProximaPergunta: document.getElementById('js-proxima-pergunta'),
+    btnPerguntaAnterior: document.getElementById('js-anterior-pergunta'),
+    indicadoresPergunta: Array.from(document.getElementsByClassName('indicador')),
+    listaPerguntas: document.getElementById('js-perguntas'),
+
     perguntas: [],
     perguntasSorteadas: [],
     perguntaAtual: 1,
@@ -87,42 +92,65 @@ var app = {
     },
 
     definePerguntaAtual: function (numero) {
-        let pergunta = $('#js-perguntas').children().eq(numero - 1);
+        let pergunta = this.listaPerguntas.children[numero - 1];
+        let classesToRemove = ['pergunta--ativa', 'pergunta-esq', 'pergunta-dir', 'pergunta-dir--esconde', 'pergunta-esq--esconde'];
 
-        let proxima = pergunta.next();
-        let anterior = pergunta.prev();
-        let classesToRemove = 'pergunta--ativa pergunta-esq pergunta-dir pergunta-dir--esconde pergunta-esq--esconde';
+        let proxima = pergunta.nextElementSibling;
+        let anterior = pergunta.previousElementSibling;
+        
+        pergunta.classList.remove(classesToRemove);
+        pergunta.classList.add('pergunta--ativa');
 
-        $(pergunta).removeClass(classesToRemove).addClass('pergunta--ativa');
+        if(anterior){
+            anterior.classList.remove(classesToRemove);
+            anterior.classList.add('pergunta-esq');
 
-        $(anterior).removeClass(classesToRemove).addClass('pergunta-esq');
-        $(proxima).removeClass(classesToRemove).addClass('pergunta-dir');
+            let elementosAnteriores = proxima.nextSiblings();
 
-        $(proxima).nextAll().removeClass(classesToRemove).addClass('pergunta-dir--esconde');
-        $(anterior).prevAll().removeClass(classesToRemove).addClass('pergunta-esq--esconde');
+            elementosAnteriores.forEach(function(elemento) {
+                if(elemento) {
+                    elemento.classList.remove(classesToRemove);
+                    elemento.classList.add('pergunta-esq--esconde');
+                }
+            });
+        }
+
+        if(proxima) {
+            proxima.classList.remove(classesToRemove);
+            proxima.classList.add('pergunta-dir');
+
+            let elementosProximos = proxima.nextSiblings();
+
+            elementosProximos.forEach(function(elemento) {
+                if(elemento) {
+                    elemento.classList.remove(classesToRemove);
+                    elemento.classList.add('pergunta-dir--esconde');
+                }
+            });
+        }
 
         if (numero > 1) {
-            let perguntaAnterior = $('#js-perguntas').children().eq(numero - 2);
-            perguntaAnterior.addClass('pergunta-esq');
+            let perguntaAnterior = this.listaPerguntas.children[numero - 2];
+            perguntaAnterior.classList.add('pergunta-esq');
 
             perguntaAnterior.click(this, function (event) {
-                if ($(this).hasClass('pergunta-esq'))
+                if (this.classList.contains('pergunta-esq'))
                     event.data.perguntaAnterior();
             });
         }
 
         if (numero < 10) {
-            let proximaPergunta = $('#js-perguntas').children().eq(numero);
-            proximaPergunta.addClass('pergunta-dir');
+            let proximaPergunta = this.listaPerguntas.children[numero];
+            proximaPergunta.classList.add('pergunta-dir');
 
             proximaPergunta.click(this, function (event) {
-                if ($(this).hasClass('pergunta-dir'))
+                if (this.classList.contains('pergunta-dir'))
                     event.data.proximaPergunta();
             });
 
-            $('#js-proxima-pergunta').html('Próxima');
+            this.btnProximaPergunta.innerHTML = 'Próxima';
         } else if (numero >= 10) {
-            $('#js-proxima-pergunta').html('Finalizar');
+            this.btnProximaPergunta.innerHTML = 'Finalizar';
         }
 
         this.perguntaAtual = numero;
@@ -139,9 +167,9 @@ var app = {
         }
 
         if (app.perguntaAtual > 9)
-            $('#js-proxima-pergunta').html('Finalizar');
+            this.btnProximaPergunta.innerHTML = 'Finalizar';
         else
-            $('#js-proxima-pergunta').html('Próxima');
+            this.btnProximaPergunta.innerHTML = 'Próxima';
     },
 
     perguntaAnterior: function () {
@@ -150,21 +178,22 @@ var app = {
             this.definePerguntaAtual(this.perguntaAtual);
         }
 
-        $('#js-proxima-pergunta').html('Próxima');
+        this.btnProximaPergunta.innerHTML = 'Próxima';
     },
 
     atualizaIndicador: function (numeroAtual) {
         for (let i = 0; i < this.perguntasSorteadas.length; i++) {
-            let e = $('#js-indicador-perguntas').children().eq(i);
-            e.removeClass('indicador--atual');
-            e.removeClass('indicador--marcado');
+            let e = document.getElementById('js-indicador-perguntas').children[i];
+            
+            e.classList.remove('indicador--atual');
+            e.classList.remove('indicador--marcado');
 
             if (this.perguntasSorteadas[i].respondida) {
-                e.addClass('indicador--marcado');
+                e.classList.add('indicador--marcado');
             }
 
             if (numeroAtual - 1 == i) {
-                e.addClass('indicador--atual');
+                e.classList.add('indicador--atual');
             }
         }
 
@@ -177,7 +206,7 @@ var app = {
             pergunta.respondida = true;
             pergunta.resposta = resposta;
 
-            $(`#pergunta-${pergunta.id}`).addClass('pergunta--respondida');
+            document.getElementById(`pergunta-${pergunta.id}`).classList.add('pergunta--respondida');
         }
     },
 
@@ -258,8 +287,6 @@ function verificaTentativas() {
 function obterPerguntas() {
     app.getListaPerguntas(
         function (perguntasXml) {
-            console.log(perguntasXml);
-
             app.mapeiaPerguntas(perguntasXml);
             app.perguntasSorteadas = app.perguntas.amostra(10);
 
@@ -299,15 +326,17 @@ function obterPerguntas() {
 }
 
 function inicializarEventos() {
-    $('#js-proxima-pergunta').click(function () {
+    app.btnProximaPergunta.addEventListener('click', () => {
         app.proximaPergunta();
     });
 
-    $('#js-anterior-pergunta').click(function () {
+    app.btnPerguntaAnterior.addEventListener('click', () => {
         app.perguntaAnterior();
     });
 
-    $('.indicador').click(function () {
-        app.definePerguntaAtual(parseInt(this.innerHTML));
-    });
+    app.indicadoresPergunta.forEach(function(element) {
+        element.addEventListener('click', function() {
+            app.definePerguntaAtual(parseInt(this.innerHTML));
+        });
+    }); 
 }
