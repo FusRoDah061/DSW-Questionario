@@ -1,603 +1,506 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element>
-        <alternativa-correta>3</alternativa-correta>
+    <pergunta alternativa-correta="3" id="1">
         <alternativas>
-            <element>&lt;js&gt;</element>
-            <element>&lt;javascript&gt;</element>
-            <element>&lt;scripting&gt;</element>
-            <element>&lt;script&gt;</element>
-            <element>&lt;code&gt;</element>
+            <alternativa>&lt;js&gt;</alternativa>
+            <alternativa>&lt;javascript&gt;</alternativa>
+            <alternativa>&lt;scripting&gt;</alternativa>
+            <alternativa>&lt;script&gt;</alternativa>
+            <alternativa>&lt;code&gt;</alternativa>
         </alternativas>
         <enunciado>Dentro de qual tag HTML é colocado o código JavaScript?</enunciado>
-        <id>1</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="2">
         <alternativas>
-            <element>document.getElement('p').innerHTML = 'Hello World!'</element>
-            <element>document.getElementById('demo').innerHTML = 'Hello World!'</element>
-            <element>document.getElementByName('p').innerHTML = 'Hello World!'</element>
-            <element>#demo.innerHTML = 'Hello World!'</element>
-            <element>document.getElementById('demo').text = 'Hello World!'</element>
+            <alternativa>document.getElement('p').innerHTML = 'Hello World!'</alternativa>
+            <alternativa>document.getElementById('demo').innerHTML = 'Hello World!'</alternativa>
+            <alternativa>document.getElementByName('p').innerHTML = 'Hello World!'</alternativa>
+            <alternativa>#demo.innerHTML = 'Hello World!'</alternativa>
+            <alternativa>document.getElementById('demo').text = 'Hello World!'</alternativa>
         </alternativas>
         <enunciado>Qual trecho de código JavaScript altera o conteúdo de um elemento &lt;p id='demo'&gt; HTML?</enunciado>
-        <id>2</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="3">
         <alternativas>
-            <element>Dentro da tag &lt;head&gt;</element>
-            <element>Dentro da tag &lt;body&gt;</element>
-            <element>Tanto na tag &lt;head&gt; quanto na tag &lt;body&gt;</element>
-            <element>Dentro da tag &lt;html&gt;</element>
-            <element>Fora da tag &lt;html&gt;</element>
+            <alternativa>Dentro da tag &lt;head&gt;</alternativa>
+            <alternativa>Dentro da tag &lt;body&gt;</alternativa>
+            <alternativa>Tanto na tag &lt;head&gt; quanto na tag &lt;body&gt;</alternativa>
+            <alternativa>Dentro da tag &lt;html&gt;</alternativa>
+            <alternativa>Fora da tag &lt;html&gt;</alternativa>
         </alternativas>
         <enunciado>Qual o local correto para inserir o código JavaScript?</enunciado>
-        <id>3</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="4">
         <alternativas>
-            <element>&lt;script name='index.js'&gt;&lt;/script&gt;</element>
-            <element>&lt;script href='index.js'/&gt;</element>
-            <element>&lt;script src='index.js'&gt;&lt;/script&gt;</element>
-            <element>&lt;script name='index.js'/&gt;</element>
-            <element>&lt;link href='index.js'/&gt;</element>
+            <alternativa>&lt;script name='index.js'&gt;&lt;/script&gt;</alternativa>
+            <alternativa>&lt;script href='index.js'/&gt;</alternativa>
+            <alternativa>&lt;script src='index.js'&gt;&lt;/script&gt;</alternativa>
+            <alternativa>&lt;script name='index.js'/&gt;</alternativa>
+            <alternativa>&lt;link href='index.js'/&gt;</alternativa>
         </alternativas>
         <enunciado>Qual a sintaxe correta para referenciar um script index.js?</enunciado>
-        <id>4</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="5">
         <alternativas>
-            <element>alert('Hello World')</element>
-            <element>alertBox('Hello World')</element>
-            <element>msg('Hello World')</element>
-            <element>msgBox('Hello World')</element>
-            <element>alerta('Hello World')</element>
+            <alternativa>alert('Hello World')</alternativa>
+            <alternativa>alertBox('Hello World')</alternativa>
+            <alternativa>msg('Hello World')</alternativa>
+            <alternativa>msgBox('Hello World')</alternativa>
+            <alternativa>alerta('Hello World')</alternativa>
         </alternativas>
         <enunciado>Qual a sintaxe para exibir um alerta ao usuário em JavaScript?</enunciado>
-        <id>5</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="6">
         <alternativas>
-            <element>myFunction()</element>
-            <element>call myFunction()</element>
-            <element>call function myFunction()</element>
-            <element>exec myFunction()</element>
-            <element>myFunction</element>
+            <alternativa>myFunction()</alternativa>
+            <alternativa>call myFunction()</alternativa>
+            <alternativa>call function myFunction()</alternativa>
+            <alternativa>exec myFunction()</alternativa>
+            <alternativa>myFunction</alternativa>
         </alternativas>
         <enunciado>Como chamar uma função JavaScript?</enunciado>
-        <id>6</id>
-    </element>
-    <element>
-        <alternativa-correta>3</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="3" id="7">
         <alternativas>
-            <element>if var == 1 then</element>
-            <element>if var == 1</element>
-            <element>if var == 1 do</element>
-            <element>if (var == 1)</element>
-            <element>if (var = 1)</element>
+            <alternativa>if var == 1 then</alternativa>
+            <alternativa>if var == 1</alternativa>
+            <alternativa>if var == 1 do</alternativa>
+            <alternativa>if (var == 1)</alternativa>
+            <alternativa>if (var = 1)</alternativa>
         </alternativas>
         <enunciado>Qual a sintaxe da estrutura condicional IF em JavaScript?</enunciado>
-        <id>7</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="8">
         <alternativas>
-            <element>'Este é um comentário</element>
-            <element>&lt;!--Este é um comentário--&gt;</element>
-            <element>//Este é um comentário</element>
-            <element>--Este é um comentário</element>
-            <element>'''Este é um comentário'''</element>
+            <alternativa>'Este é um comentário</alternativa>
+            <alternativa>&lt;!--Este é um comentário--&gt;</alternativa>
+            <alternativa>//Este é um comentário</alternativa>
+            <alternativa>--Este é um comentário</alternativa>
+            <alternativa>'''Este é um comentário'''</alternativa>
         </alternativas>
         <enunciado>Como escrever um comentário em JavaScript?</enunciado>
-        <id>8</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="9">
         <alternativas>
-            <element>Mozilla</element>
-            <element>The World Wide Web Consortium (W3C)</element>
-            <element>Organização Internacional de Normalização (ISO)</element>
-            <element>Google</element>
-            <element>Instituto de Engenheiros Eletricistas e Eletrônicos (IEEE)</element>
+            <alternativa>Mozilla</alternativa>
+            <alternativa>The World Wide Web Consortium (W3C)</alternativa>
+            <alternativa>Organização Internacional de Normalização (ISO)</alternativa>
+            <alternativa>Google</alternativa>
+            <alternativa>Instituto de Engenheiros Eletricistas e Eletrônicos (IEEE)</alternativa>
         </alternativas>
         <enunciado>Qual orgão controla os padrões para web?</enunciado>
-        <id>9</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="10">
         <alternativas>
-            <element>&lt;p&gt;</element>
-            <element>&lt;br&gt;</element>
-            <element>&lt;crlf&gt;</element>
-            <element>&lt;break&gt;</element>
-            <element>&lt;line&gt;</element>
+            <alternativa>&lt;p&gt;</alternativa>
+            <alternativa>&lt;br&gt;</alternativa>
+            <alternativa>&lt;crlf&gt;</alternativa>
+            <alternativa>&lt;break&gt;</alternativa>
+            <alternativa>&lt;line&gt;</alternativa>
         </alternativas>
         <enunciado>Qual o elemento HTML para inserir quebras de linha?</enunciado>
-        <id>10</id>
-    </element>
-    <element>
-        <alternativa-correta>3</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="3" id="11">
         <alternativas>
-            <element>while (i &lt;= 10; i++)</element>
-            <element>while i &lt;= 10 do</element>
-            <element>while i = 1 to 10</element>
-            <element>while (i &lt;= 10)</element>
-            <element>while i &lt;= 10</element>
+            <alternativa>while (i &lt;= 10; i++)</alternativa>
+            <alternativa>while i &lt;= 10 do</alternativa>
+            <alternativa>while i = 1 to 10</alternativa>
+            <alternativa>while (i &lt;= 10)</alternativa>
+            <alternativa>while i &lt;= 10</alternativa>
         </alternativas>
         <enunciado>Qual a sintaxe da estrutura de repetição WHILE em JavaScript?</enunciado>
-        <id>11</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="12">
         <alternativas>
-            <element>for (i &lt;= 5; i++)</element>
-            <element>for i = 0 to 5</element>
-            <element>for (i = 0; i &lt;= 5; i++)</element>
-            <element>for (i = 0; i &lt;= 5)</element>
-            <element>for i = 0 to 5 step 1</element>
+            <alternativa>for (i &lt;= 5; i++)</alternativa>
+            <alternativa>for i = 0 to 5</alternativa>
+            <alternativa>for (i = 0; i &lt;= 5; i++)</alternativa>
+            <alternativa>for (i = 0; i &lt;= 5)</alternativa>
+            <alternativa>for i = 0 to 5 step 1</alternativa>
         </alternativas>
         <enunciado>Qual a sintaxe da estrutura de repetição FOR em JavaScript?</enunciado>
-        <id>12</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="13">
         <alternativas>
-            <element>&lt;a name='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</element>
-            <element>&lt;a href='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</element>
-            <element>&lt;a link='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</element>
-            <element>&lt;link href='http://www.example.com'&gt;Site exemplo&lt;/link&gt;</element>
-            <element>&lt;a src='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</element>
+            <alternativa>&lt;a name='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</alternativa>
+            <alternativa>&lt;a href='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</alternativa>
+            <alternativa>&lt;a link='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</alternativa>
+            <alternativa>&lt;link href='http://www.example.com'&gt;Site exemplo&lt;/link&gt;</alternativa>
+            <alternativa>&lt;a src='http://www.example.com'&gt;Site exemplo&lt;/a&gt;</alternativa>
         </alternativas>
         <enunciado>Qual das alternativas define corretamente um hyperlink HTML?</enunciado>
-        <id>13</id>
-    </element>
-    <element>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="14">
         <alternativa-correta>1</alternativa-correta>
         <alternativas>
-            <element>&lt;table&gt;&lt;cell&gt;&lt;column&gt;&lt;row&gt;</element>
-            <element>&lt;table&gt;&lt;thead&gt;&lt;tbody&gt;&lt;tfoot&gt;</element>
-            <element>&lt;table&gt;&lt;row&gt;&lt;column&gt;&lt;td&gt;</element>
-            <element>&lt;table&gt;&lt;head&gt;&lt;footer&gt;</element>
-            <element>&lt;table&gt;&lt;thead&gt;&lt;footer&gt;</element>
+            <alternativa>&lt;table&gt;&lt;cell&gt;&lt;column&gt;&lt;row&gt;</alternativa>
+            <alternativa>&lt;table&gt;&lt;thead&gt;&lt;tbody&gt;&lt;tfoot&gt;</alternativa>
+            <alternativa>&lt;table&gt;&lt;row&gt;&lt;column&gt;&lt;td&gt;</alternativa>
+            <alternativa>&lt;table&gt;&lt;head&gt;&lt;footer&gt;</alternativa>
+            <alternativa>&lt;table&gt;&lt;thead&gt;&lt;footer&gt;</alternativa>
         </alternativas>
         <enunciado>Qual dos elementos HTML são utilizados na definição de tabelas?</enunciado>
-        <id>14</id>
-    </element>
-    <element>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="15">
         <alternativa-correta>1</alternativa-correta>
         <alternativas>
-            <element>&lt;ul&gt;</element>
-            <element>&lt;ol&gt;</element>
-            <element>&lt;nl&gt;</element>
-            <element>&lt;list&gt;</element>
-            <element>&lt;ordered&gt;</element>
+            <alternativa>&lt;ul&gt;</alternativa>
+            <alternativa>&lt;ol&gt;</alternativa>
+            <alternativa>&lt;nl&gt;</alternativa>
+            <alternativa>&lt;list&gt;</alternativa>
+            <alternativa>&lt;ordered&gt;</alternativa>
         </alternativas>
         <enunciado>Com qual tag são criadas listas HTML ordenadas (numeradas)?</enunciado>
-        <id>15</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="16">
         <alternativas>
-            <element>&lt;bl&gt;</element>
-            <element>&lt;ul&gt;</element>
-            <element>&lt;list&gt;</element>
-            <element>&lt;ol&gt;</element>
-            <element>&lt;ordered&gt;</element>
+            <alternativa>&lt;bl&gt;</alternativa>
+            <alternativa>&lt;ul&gt;</alternativa>
+            <alternativa>&lt;list&gt;</alternativa>
+            <alternativa>&lt;ol&gt;</alternativa>
+            <alternativa>&lt;ordered&gt;</alternativa>
         </alternativas>
         <enunciado>Com qual tag são criadas listas HTML não-ordenadas (em tópicos)?</enunciado>
-        <id>16</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="17">
         <alternativas>
-            <element>&lt;!DOCTYPE&gt;</element>
-            <element>&lt;!VERSION&gt;</element>
-            <element>&lt;!V&gt;</element>
-            <element>&lt;HTML&gt;</element>
-            <element>Não existe uma tag que identifica a versão do HTML</element>
+            <alternativa>&lt;!DOCTYPE&gt;</alternativa>
+            <alternativa>&lt;!VERSION&gt;</alternativa>
+            <alternativa>&lt;!V&gt;</alternativa>
+            <alternativa>&lt;HTML&gt;</alternativa>
+            <alternativa>Não existe uma tag que identifica a versão do HTML</alternativa>
         </alternativas>
         <enunciado>Qual tag identifica a versão do HTML utilizada?</enunciado>
-        <id>17</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="18">
         <alternativas>
-            <element>&lt;check&gt;</element>
-            <element>&lt;checkbox&gt;</element>
-            <element>&lt;input type='checkbox'&gt;</element>
-            <element>&lt;input type='check'&gt;</element>
-            <element>&lt;input type='cb'&gt;</element>
+            <alternativa>&lt;check&gt;</alternativa>
+            <alternativa>&lt;checkbox&gt;</alternativa>
+            <alternativa>&lt;input type='checkbox'&gt;</alternativa>
+            <alternativa>&lt;input type='check'&gt;</alternativa>
+            <alternativa>&lt;input type='cb'&gt;</alternativa>
         </alternativas>
         <enunciado>Como são definidas caixas de seleção em HTML?</enunciado>
-        <id>18</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="19">
         <alternativas>
-            <element>&lt;textinput&gt;</element>
-            <element>&lt;textbox&gt;</element>
-            <element>&lt;input type='text'&gt;</element>
-            <element>&lt;input type='textfield'&gt;</element>
-            <element>&lt;input type='textbox'&gt;</element>
+            <alternativa>&lt;textinput&gt;</alternativa>
+            <alternativa>&lt;textbox&gt;</alternativa>
+            <alternativa>&lt;input type='text'&gt;</alternativa>
+            <alternativa>&lt;input type='textfield'&gt;</alternativa>
+            <alternativa>&lt;input type='textbox'&gt;</alternativa>
         </alternativas>
         <enunciado>Como são definidas caixas de texto em HTML?</enunciado>
-        <id>19</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="20">
         <alternativas>
-            <element>Verdadeiro</element>
-            <element>Falso</element>
-            <element>Falso. Não existe uma tag &lt;iframe&gt;</element>
-            <element>Falso. Toda página web deve estar dentro da tag &lt;iframe&gt;</element>
-            <element>Falso. Essa função é da tag &lt;website&gt;</element>
+            <alternativa>Verdadeiro</alternativa>
+            <alternativa>Falso</alternativa>
+            <alternativa>Falso. Não existe uma tag &lt;iframe&gt;</alternativa>
+            <alternativa>Falso. Toda página web deve estar dentro da tag &lt;iframe&gt;</alternativa>
+            <alternativa>Falso. Essa função é da tag &lt;website&gt;</alternativa>
         </alternativas>
         <enunciado>A tag &lt;iframe&gt; é utilizada para carregar uma página web dentro de outra.</enunciado>
-        <id>20</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="21">
         <alternativas>
-            <element>Cascading Style Sheets</element>
-            <element>Creative Style Sheets</element>
-            <element>Computer Style Sheets</element>
-            <element>Colorful Style Sheets</element>
-            <element>Common Style Sheets</element>
+            <alternativa>Cascading Style Sheets</alternativa>
+            <alternativa>Creative Style Sheets</alternativa>
+            <alternativa>Computer Style Sheets</alternativa>
+            <alternativa>Colorful Style Sheets</alternativa>
+            <alternativa>Common Style Sheets</alternativa>
         </alternativas>
         <enunciado>Qual o significado da sigla CSS?</enunciado>
-        <id>21</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="22">
         <alternativas>
-            <element>&lt;style src='style.css'&gt;</element>
-            <element>&lt;stylesheet&gt;style.css&lt;/stylesheet&gt;</element>
-            <element>&lt;link rel='stylesheet' href='style.css'/&gt;</element>
-            <element>&lt;link rel='stylesheet' src='style.css'/&gt;</element>
-            <element>&lt;link rel='css' href='style.css'/&gt;</element>
+            <alternativa>&lt;style src='style.css'&gt;</alternativa>
+            <alternativa>&lt;stylesheet&gt;style.css&lt;/stylesheet&gt;</alternativa>
+            <alternativa>&lt;link rel='stylesheet' href='style.css'/&gt;</alternativa>
+            <alternativa>&lt;link rel='stylesheet' src='style.css'/&gt;</alternativa>
+            <alternativa>&lt;link rel='css' href='style.css'/&gt;</alternativa>
         </alternativas>
         <enunciado>Qual a maneira correta de referenciar um arquivo CSS pelo HTML?</enunciado>
-        <id>22</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="23">
         <alternativas>
-            <element>Dentro da tag &lt;head&gt;</element>
-            <element>Dentro da tag &lt;body&gt;</element>
-            <element>No fim do documento</element>
-            <element>Tanto na tag &lt;head&gt; quanto na tag &lt;body&gt;</element>
-            <element>Dentro da tag &lt;html&gt;</element>
+            <alternativa>Dentro da tag &lt;head&gt;</alternativa>
+            <alternativa>Dentro da tag &lt;body&gt;</alternativa>
+            <alternativa>No fim do documento</alternativa>
+            <alternativa>Tanto na tag &lt;head&gt; quanto na tag &lt;body&gt;</alternativa>
+            <alternativa>Dentro da tag &lt;html&gt;</alternativa>
         </alternativas>
         <enunciado>Qual o local correto para inserir o estilo CSS?</enunciado>
-        <id>23</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="24">
         <alternativas>
-            <element>&lt;style&gt;</element>
-            <element>&lt;css&gt;</element>
-            <element>&lt;script&gt;</element>
-            <element>&lt;stylesheet&gt;</element>
-            <element>&lt;styles&gt;</element>
+            <alternativa>&lt;style&gt;</alternativa>
+            <alternativa>&lt;css&gt;</alternativa>
+            <alternativa>&lt;script&gt;</alternativa>
+            <alternativa>&lt;stylesheet&gt;</alternativa>
+            <alternativa>&lt;styles&gt;</alternativa>
         </alternativas>
         <enunciado>Qual tag HTML define uma seção de estilos CSS?</enunciado>
-        <id>24</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="25">
         <alternativas>
-            <element>style</element>
-            <element>class</element>
-            <element>font</element>
-            <element>styles</element>
-            <element>css</element>
+            <alternativa>style</alternativa>
+            <alternativa>class</alternativa>
+            <alternativa>font</alternativa>
+            <alternativa>styles</alternativa>
+            <alternativa>css</alternativa>
         </alternativas>
         <enunciado>Qual atributo HTML define os estilos CSS de um elemento?</enunciado>
-        <id>25</id>
-    </element>
-    <element>
-        <alternativa-correta>3</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="3" id="26">
         <alternativas>
-            <element>{ body: color = black }</element>
-            <element>body: color = black</element>
-            <element>{ body; color: black; }</element>
-            <element>body { color: black; }</element>
-            <element>body { color = black; }</element>
+            <alternativa>{ body: color = black }</alternativa>
+            <alternativa>body: color = black</alternativa>
+            <alternativa>{ body; color: black; }</alternativa>
+            <alternativa>body { color: black; }</alternativa>
+            <alternativa>body { color = black; }</alternativa>
         </alternativas>
         <enunciado>Qual é a sintaxe CSS correta?</enunciado>
-        <id>26</id>
-    </element>
-    <element>
-        <alternativa-correta>4</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="4" id="27">
         <alternativas>
-            <element>'Este é um comentário</element>
-            <element>&lt;!--Este é um comentário--&gt;</element>
-            <element>//Este é um comentário</element>
-            <element>--Este é um comentário</element>
-            <element>/* Este é um comentário */</element>
+            <alternativa>'Este é um comentário</alternativa>
+            <alternativa>&lt;!--Este é um comentário--&gt;</alternativa>
+            <alternativa>//Este é um comentário</alternativa>
+            <alternativa>--Este é um comentário</alternativa>
+            <alternativa>/* Este é um comentário */</alternativa>
         </alternativas>
         <enunciado>Como são definidos comentários CSS?</enunciado>
-        <id>27</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="28">
         <alternativas>
-            <element>color</element>
-            <element>bgcolor</element>
-            <element>background-color</element>
-            <element>bg-color</element>
-            <element>paint</element>
+            <alternativa>color</alternativa>
+            <alternativa>bgcolor</alternativa>
+            <alternativa>background-color</alternativa>
+            <alternativa>bg-color</alternativa>
+            <alternativa>paint</alternativa>
         </alternativas>
         <enunciado>Qual propriedade CSS altera a cor de fundo de um elemento HTML?</enunciado>
-        <id>28</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="29">
         <alternativas>
-            <element>color</element>
-            <element>letter-color</element>
-            <element>text-color</element>
-            <element>fg-color</element>
-            <element>font-color</element>
+            <alternativa>color</alternativa>
+            <alternativa>letter-color</alternativa>
+            <alternativa>text-color</alternativa>
+            <alternativa>fg-color</alternativa>
+            <alternativa>font-color</alternativa>
         </alternativas>
         <enunciado>Qual propriedade CSS altera a cor do texto de um elemento HTML?</enunciado>
-        <id>29</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="30">
         <alternativas>
-            <element>text-size</element>
-            <element>font-size</element>
-            <element>font-style</element>
-            <element>text-style</element>
-            <element>line-height</element>
+            <alternativa>text-size</alternativa>
+            <alternativa>font-size</alternativa>
+            <alternativa>font-style</alternativa>
+            <alternativa>text-style</alternativa>
+            <alternativa>line-height</alternativa>
         </alternativas>
         <enunciado>Qual propriedade CSS controla o tamanho do texto de um elemento HTML?</enunciado>
-        <id>30</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="31">
         <alternativas>
-            <element>text-transform: capitalize</element>
-            <element>transform: capitalize</element>
-            <element>text-style: capitalize</element>
-            <element>Não é possível fazer isso em CSS</element>
-            <element>word-transform: capitalize</element>
+            <alternativa>text-transform: capitalize</alternativa>
+            <alternativa>transform: capitalize</alternativa>
+            <alternativa>text-style: capitalize</alternativa>
+            <alternativa>Não é possível fazer isso em CSS</alternativa>
+            <alternativa>word-transform: capitalize</alternativa>
         </alternativas>
         <enunciado>Como fazer o texto de cada palavra em um texto ficar com a letra inicial em maiúsculo com CSS?</enunciado>
-        <id>31</id>
-    </element>
-    <element>
-        <alternativa-correta>4</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="4" id="32">
         <alternativas>
-            <element>fontface</element>
-            <element>font-weight</element>
-            <element>font</element>
-            <element>font-style</element>
-            <element>font-family</element>
+            <alternativa>fontface</alternativa>
+            <alternativa>font-weight</alternativa>
+            <alternativa>font</alternativa>
+            <alternativa>font-style</alternativa>
+            <alternativa>font-family</alternativa>
         </alternativas>
         <enunciado>Qual propriedade CSS é usada para alterar a fonte do texto de um elemento HTML?</enunciado>
-        <id>32</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="33">
         <alternativas>
-            <element>#foo</element>
-            <element>.foo</element>
-            <element>foo</element>
-            <element>id:foo</element>
-            <element>*foo</element>
+            <alternativa>#foo</alternativa>
+            <alternativa>.foo</alternativa>
+            <alternativa>foo</alternativa>
+            <alternativa>id:foo</alternativa>
+            <alternativa>*foo</alternativa>
         </alternativas>
         <enunciado>Como selecionar um elemento HTML com id 'foo' em CSS?</enunciado>
-        <id>33</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="34">
         <alternativas>
-            <element>#bar</element>
-            <element>.bar</element>
-            <element>bar</element>
-            <element>class:bar</element>
-            <element>*bar</element>
+            <alternativa>#bar</alternativa>
+            <alternativa>.bar</alternativa>
+            <alternativa>bar</alternativa>
+            <alternativa>class:bar</alternativa>
+            <alternativa>*bar</alternativa>
         </alternativas>
         <enunciado>Como selecionar um elemento HTML com classe 'bar' em CSS?</enunciado>
-        <id>34</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="35">
         <alternativas>
-            <element>&lt;head&gt;</element>
-            <element>&lt;page-title&gt;</element>
-            <element>&lt;title&gt;</element>
-            <element>&lt;meta&gt;</element>
-            <element>&lt;DOCTYPE&gt;</element>
+            <alternativa>&lt;head&gt;</alternativa>
+            <alternativa>&lt;page-title&gt;</alternativa>
+            <alternativa>&lt;title&gt;</alternativa>
+            <alternativa>&lt;meta&gt;</alternativa>
+            <alternativa>&lt;DOCTYPE&gt;</alternativa>
         </alternativas>
         <enunciado>Qual tag HTML define o título da página?</enunciado>
-        <id>35</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="36">
         <alternativas>
-            <element>&lt;!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 5.0//EN' 'http://www..w3.org/TR/html5/strict.dtd'&gt;</element>
-            <element>&lt;!DOCTYPE HTML5&gt;</element>
-            <element>&lt;!DOCTYPE html&gt;</element>
-            <element>&lt;!DOCTYPE HTML '-V5'&gt;</element>
-            <element>&lt;!DOCTYPE html version='5'&gt;</element>
+            <alternativa>&lt;!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 5.0//EN' 'http://www..w3.org/TR/html5/strict.dtd'&gt;</alternativa>
+            <alternativa>&lt;!DOCTYPE HTML5&gt;</alternativa>
+            <alternativa>&lt;!DOCTYPE html&gt;</alternativa>
+            <alternativa>&lt;!DOCTYPE HTML '-V5'&gt;</alternativa>
+            <alternativa>&lt;!DOCTYPE html version='5'&gt;</alternativa>
         </alternativas>
         <enunciado>Qual o doctype que identifica o HTML5?</enunciado>
-        <id>36</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="37">
         <alternativas>
-            <element>Atributos de eventos</element>
-            <element>Atributos de estilo</element>
-            <element>Elementos HTML</element>
-            <element>Seletores CSS</element>
-            <element>Atributos de validação</element>
+            <alternativa>Atributos de eventos</alternativa>
+            <alternativa>Atributos de estilo</alternativa>
+            <alternativa>Elementos HTML</alternativa>
+            <alternativa>Seletores CSS</alternativa>
+            <alternativa>Atributos de validação</alternativa>
         </alternativas>
         <enunciado>Em HTML, onblur e onfocus são:</enunciado>
-        <id>37</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="38">
         <alternativas>
-            <element>var cores = 1 = ('vermelho'), 2 = ('verde'), 3 = ('azul')</element>
-            <element>var cores = 'vermelho', 'verde', 'azul'</element>
-            <element>var cores = ['vermelho', 'verde', 'azul']</element>
-            <element>var cores = (1:'vermelho', 2:'verde', 3:'azul')</element>
-            <element>var cores = {1:'vermelho', 2:'verde', 3:'azul'}</element>
+            <alternativa>var cores = 1 = ('vermelho'), 2 = ('verde'), 3 = ('azul')</alternativa>
+            <alternativa>var cores = 'vermelho', 'verde', 'azul'</alternativa>
+            <alternativa>var cores = ['vermelho', 'verde', 'azul']</alternativa>
+            <alternativa>var cores = (1:'vermelho', 2:'verde', 3:'azul')</alternativa>
+            <alternativa>var cores = {1:'vermelho', 2:'verde', 3:'azul'}</alternativa>
         </alternativas>
         <enunciado>Qual a forma correta de criar vetores JavaScript?</enunciado>
-        <id>38</id>
-    </element>
-    <element>
-        <alternativa-correta>3</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="3" id="39">
         <alternativas>
-            <element>onpress</element>
-            <element>onmouseover</element>
-            <element>onmouseclick</element>
-            <element>onclick</element>
-            <element>onchange</element>
+            <alternativa>onpress</alternativa>
+            <alternativa>onmouseover</alternativa>
+            <alternativa>onmouseclick</alternativa>
+            <alternativa>onclick</alternativa>
+            <alternativa>onchange</alternativa>
         </alternativas>
         <enunciado>Qual evento JavaScript é disparado quando o usuário clica em um elemento HTML?</enunciado>
-        <id>39</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="40">
         <alternativas>
-            <element>var variavel;</element>
-            <element>def variavel</element>
-            <element>variavel</element>
-            <element>int variavel</element>
-            <element>$variavel</element>
+            <alternativa>var variavel;</alternativa>
+            <alternativa>def variavel</alternativa>
+            <alternativa>variavel</alternativa>
+            <alternativa>int variavel</alternativa>
+            <alternativa>$variavel</alternativa>
         </alternativas>
         <enunciado>Como são declaradas variáveis JavaScript?</enunciado>
-        <id>40</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="41">
         <alternativas>
-            <element>?</element>
-            <element>$</element>
-            <element>%</element>
-            <element>&amp;</element>
-            <element>Não existe um sinal para jQuery</element>
+            <alternativa>?</alternativa>
+            <alternativa>$</alternativa>
+            <alternativa>%</alternativa>
+            <alternativa>&amp;</alternativa>
+            <alternativa>Não existe um sinal para jQuery</alternativa>
         </alternativas>
         <enunciado>Qual o símbolo usado para acessar funções jQuery?</enunciado>
-        <id>41</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="42">
         <alternativas>
-            <element>$('p').manipulate('background-color', 'red');</element>
-            <element>$('p').css('background-color', 'red');</element>
-            <element>$('p').style('background-color', 'red');</element>
-            <element>$('p').layout('background-color', 'red');</element>
-            <element>Não é possível alterar estilos com jQuery</element>
+            <alternativa>$('p').manipulate('background-color', 'red');</alternativa>
+            <alternativa>$('p').css('background-color', 'red');</alternativa>
+            <alternativa>$('p').style('background-color', 'red');</alternativa>
+            <alternativa>$('p').layout('background-color', 'red');</alternativa>
+            <alternativa>Não é possível alterar estilos com jQuery</alternativa>
         </alternativas>
         <enunciado>Como mudar a cor de fundo de todos os elementos &lt;p&gt; com jQuery?</enunciado>
-        <id>42</id>
-    </element>
-    <element>
-        <alternativa-correta>3</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="3" id="43">
         <alternativas>
-            <element>Todos os elementos div com id 'intro'</element>
-            <element>O primeiro elemento div com a classe 'intro'</element>
-            <element>Todo os elementos com a classe 'intro' que são filhos de um elemento div</element>
-            <element>Todos os elementos div com a classe 'intro'</element>
-            <element>O primeiro elemento div com id 'intro'</element>
+            <alternativa>Todos os elementos div com id 'intro'</alternativa>
+            <alternativa>O primeiro elemento div com a classe 'intro'</alternativa>
+            <alternativa>Todo os elementos com a classe 'intro' que são filhos de um elemento div</alternativa>
+            <alternativa>Todos os elementos div com a classe 'intro'</alternativa>
+            <alternativa>O primeiro elemento div com id 'intro'</alternativa>
         </alternativas>
         <enunciado>Com jQuery, o que o seletor $('div.intro') seleciona?</enunciado>
-        <id>43</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="44">
         <alternativas>
-            <element>display(none)</element>
-            <element>visible(false)</element>
-            <element>hide()</element>
-            <element>hidden()</element>
-            <element>visibility(hidden)</element>
+            <alternativa>display(none)</alternativa>
+            <alternativa>visible(false)</alternativa>
+            <alternativa>hide()</alternativa>
+            <alternativa>hidden()</alternativa>
+            <alternativa>visibility(hidden)</alternativa>
         </alternativas>
         <enunciado>Qual método jQuery é usado para esconder elementos HTML?</enunciado>
-        <id>44</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="45">
         <alternativas>
-            <element>css()</element>
-            <element>style()</element>
-            <element>attr()</element>
-            <element>html()</element>
-            <element>stylesheet()</element>
+            <alternativa>css()</alternativa>
+            <alternativa>style()</alternativa>
+            <alternativa>attr()</alternativa>
+            <alternativa>html()</alternativa>
+            <alternativa>stylesheet()</alternativa>
         </alternativas>
         <enunciado>Qual método jQuery é usado para definir um ou mais estilos CSS em elementos HTML?</enunciado>
-        <id>45</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="46">
         <alternativas>
-            <element>.container-fluid</element>
-            <element>.container-fixed</element>
-            <element>.container</element>
-            <element>.container-full-width</element>
-            <element>.container-big</element>
+            <alternativa>.container-fluid</alternativa>
+            <alternativa>.container-fixed</alternativa>
+            <alternativa>.container</alternativa>
+            <alternativa>.container-full-width</alternativa>
+            <alternativa>.container-big</alternativa>
         </alternativas>
         <enunciado>No Bootstrap, qual classe define um container que ocupa toda a largura da janela?</enunciado>
-        <id>46</id>
-    </element>
-    <element>
-        <alternativa-correta>3</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="3" id="47">
         <alternativas>
-            <element>6</element>
-            <element>3</element>
-            <element>9</element>
-            <element>12</element>
-            <element>10</element>
+            <alternativa>6</alternativa>
+            <alternativa>3</alternativa>
+            <alternativa>9</alternativa>
+            <alternativa>12</alternativa>
+            <alternativa>10</alternativa>
         </alternativas>
         <enunciado>O sistema de grade do Bootstrap é baseado em quantas colunas?</enunciado>
-        <id>47</id>
-    </element>
-    <element>
-        <alternativa-correta>2</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="2" id="48">
         <alternativas>
-            <element>.table-zebra</element>
-            <element>.even e .odd</element>
-            <element>.table-striped</element>
-            <element>.table-bordered</element>
-            <element>.table-alternate</element>
+            <alternativa>.table-zebra</alternativa>
+            <alternativa>.even e .odd</alternativa>
+            <alternativa>.table-striped</alternativa>
+            <alternativa>.table-bordered</alternativa>
+            <alternativa>.table-alternate</alternativa>
         </alternativas>
         <enunciado>Qual classe Bootstrap torna uma tabela listrada (zebra)?</enunciado>
-        <id>48</id>
-    </element>
-    <element>
-        <alternativa-correta>0</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="0" id="49">
         <alternativas>
-            <element>.jumbotron</element>
-            <element>.container</element>
-            <element>.bigbox</element>
-            <element>.container-featured</element>
-            <element>.container-highlight</element>
+            <alternativa>.jumbotron</alternativa>
+            <alternativa>.container</alternativa>
+            <alternativa>.bigbox</alternativa>
+            <alternativa>.container-featured</alternativa>
+            <alternativa>.container-highlight</alternativa>
         </alternativas>
         <enunciado>Qual classe Bootstrap é utilizada para criar um caixa grande para chamar mais atenção?</enunciado>
-        <id>49</id>
-    </element>
-    <element>
-        <alternativa-correta>1</alternativa-correta>
+    </pergunta>
+    <pergunta alternativa-correta="1" id="50">
         <alternativas>
-            <element>.container-fluid</element>
-            <element>.container-fixed</element>
-            <element>.container</element>
-            <element>.container-full-width</element>
-            <element>.container-big</element>
+            <alternativa>.container-fluid</alternativa>
+            <alternativa>.container-fixed</alternativa>
+            <alternativa>.container</alternativa>
+            <alternativa>.container-full-width</alternativa>
+            <alternativa>.container-big</alternativa>
         </alternativas>
         <enunciado>No Bootstrap, qual classe define um container de tamanho fixo?</enunciado>
         <id>50</id>
-    </element>
+    </pergunta>
 </root>

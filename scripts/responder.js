@@ -6,13 +6,31 @@ var app = {
 
     getListaPerguntas: function (successCallback, failCallback) {
         $.ajax({
-            url: 'assets/perguntas.json',
+            url: 'assets/perguntas.xml',
             method: 'GET',
-            dataType: 'json',
+            dataType: 'xml',
             success: successCallback.bind(this),
             fail: failCallback.bind(this),
             error: failCallback.bind(this)
         });
+    },
+
+    mapeiaPerguntas: function(perguntasXml) {
+        let perguntas = perguntasXml.getElementsByTagName('pergunta');
+        let perguntasJson = [];
+
+        for(let pergunta of perguntas) {
+            perguntasJson.push({
+                id: parseInt(pergunta.getAttribute('id')),
+                enunciado: pergunta.getElementsByTagName('enunciado')[0].textContent,
+                alternativaCorreta: pergunta.getAttribute('alternativa-correta'),
+                alternativas: Array.from(pergunta.getElementsByTagName('alternativa')).map(item => {
+                    return item.textContent
+                })
+            });
+        }
+
+        this.perguntas = perguntasJson;
     },
 
     apresentaPerguntas: function (perguntas) {
@@ -166,48 +184,48 @@ var app = {
     salvarTentativa: function () {
 
         Swal.fire({
-                title: 'Resultado do questionário',
-                html: `
-                <p>Perguntas em <span style="color: #2f9e41">VERDE</span> estão corretas.</p>
-                <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
+            title: 'Resultado do questionário',
+            html: `
+            <p>Perguntas em <span style="color: #2f9e41">VERDE</span> estão corretas.</p>
+            <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
 
-                <ul class="resultado">
-                    ${this.perguntasSorteadas.map(function(pergunta, i) {
-                        if (pergunta.resposta == pergunta['alternativa-correta'])
-                            return `<li class="resultado--certa">${i + 1}</li>`;
-                        else
-                            return `<li>${i + 1}</li>`;
-                    }).join(' ')}
-                </ul>
-            `,
-                type: 'info',
-                customClass: {
-                    confirmButton: 'btn btn-block btn-success',
-                    cancelButton: 'btn btn-block btn-danger'
-                },
-                buttonsStyling: false,
-                showCancelButton: true,
-                confirmButtonText: 'Concluir',
-                cancelButtonText: 'Descartar tentativa'
-            })
-            .then((result) => {
-                if (result.value) {
-                    let somadorNota = function (acumulador, pergunta) {
-                        if (pergunta.resposta == pergunta['alternativa-correta'])
-                            acumulador += 1;
+            <ul class="resultado">
+                ${this.perguntasSorteadas.map(function(pergunta, i) {
+                    if (pergunta.resposta == pergunta.alternativaCorreta)
+                        return `<li class="resultado--certa">${i + 1}</li>`;
+                    else
+                        return `<li>${i + 1}</li>`;
+                }).join(' ')}
+            </ul>
+        `,
+            type: 'info',
+            customClass: {
+                confirmButton: 'btn btn-block btn-success',
+                cancelButton: 'btn btn-block btn-danger'
+            },
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: 'Concluir',
+            cancelButtonText: 'Descartar tentativa'
+        })
+        .then((result) => {
+            if (result.value) {
+                let somadorNota = function (acumulador, pergunta) {
+                    if (pergunta.resposta == pergunta.alternativaCorreta)
+                        acumulador += 1;
 
-                        return acumulador;
-                    };
+                    return acumulador;
+                };
 
-                    window.tentativas.push({
-                        data: new Date().toLocaleString('en-GB').split(',').join(''),
-                        perguntas: this.perguntasSorteadas,
-                        nota: this.perguntasSorteadas.reduce(somadorNota, 0)
-                    });
-                }
+                window.tentativas.push({
+                    data: new Date().toLocaleString('en-GB').split(',').join(''),
+                    perguntas: this.perguntasSorteadas,
+                    nota: this.perguntasSorteadas.reduce(somadorNota, 0)
+                });
+            }
 
-                location.href = 'index.html';
-            });
+            location.href = 'index.html';
+        });
     },
 };
 
@@ -239,8 +257,10 @@ function verificaTentativas() {
 
 function obterPerguntas() {
     app.getListaPerguntas(
-        function (perguntas) {
-            app.perguntas = perguntas;
+        function (perguntasXml) {
+            console.log(perguntasXml);
+
+            app.mapeiaPerguntas(perguntasXml);
             app.perguntasSorteadas = app.perguntas.amostra(10);
 
             app.apresentaPerguntas(app.perguntasSorteadas);
