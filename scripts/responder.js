@@ -71,7 +71,7 @@ var app = {
             `;
         }
 
-        $('#js-perguntas').html(html);
+        this.listaPerguntas.innerHTML = html;
 
         $('.form-check-input').change(this, function (ev) {
             if (this.checked) {
@@ -97,53 +97,47 @@ var app = {
 
         let proxima = pergunta.nextElementSibling;
         let anterior = pergunta.previousElementSibling;
-        
-        pergunta.classList.remove(classesToRemove);
+
+        pergunta.classList.remove(...classesToRemove);
         pergunta.classList.add('pergunta--ativa');
 
         if(anterior){
-            anterior.classList.remove(classesToRemove);
+            anterior.classList.remove(...classesToRemove);
             anterior.classList.add('pergunta-esq');
 
-            let elementosAnteriores = proxima.nextSiblings();
+            let elementosAnteriores = anterior.previousSiblings();
 
             elementosAnteriores.forEach(function(elemento) {
                 if(elemento) {
-                    elemento.classList.remove(classesToRemove);
+                    elemento.classList.remove(...classesToRemove);
                     elemento.classList.add('pergunta-esq--esconde');
                 }
             });
         }
 
         if(proxima) {
-            proxima.classList.remove(classesToRemove);
+            proxima.classList.remove(...classesToRemove);
             proxima.classList.add('pergunta-dir');
 
             let elementosProximos = proxima.nextSiblings();
 
             elementosProximos.forEach(function(elemento) {
                 if(elemento) {
-                    elemento.classList.remove(classesToRemove);
+                    elemento.classList.remove(...classesToRemove);
                     elemento.classList.add('pergunta-dir--esconde');
                 }
             });
         }
 
         if (numero > 1) {
-            let perguntaAnterior = this.listaPerguntas.children[numero - 2];
-            perguntaAnterior.classList.add('pergunta-esq');
-
-            perguntaAnterior.click(this, function (event) {
+            anterior.click(this, function (event) {
                 if (this.classList.contains('pergunta-esq'))
                     event.data.perguntaAnterior();
             });
         }
 
         if (numero < 10) {
-            let proximaPergunta = this.listaPerguntas.children[numero];
-            proximaPergunta.classList.add('pergunta-dir');
-
-            proximaPergunta.click(this, function (event) {
+            proxima.click(this, function (event) {
                 if (this.classList.contains('pergunta-dir'))
                     event.data.proximaPergunta();
             });
@@ -184,7 +178,7 @@ var app = {
     atualizaIndicador: function (numeroAtual) {
         for (let i = 0; i < this.perguntasSorteadas.length; i++) {
             let e = document.getElementById('js-indicador-perguntas').children[i];
-            
+
             e.classList.remove('indicador--atual');
             e.classList.remove('indicador--marcado');
 
@@ -338,5 +332,5 @@ function inicializarEventos() {
         element.addEventListener('click', function() {
             app.definePerguntaAtual(parseInt(this.innerHTML));
         });
-    }); 
+    });
 }

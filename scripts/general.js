@@ -24,7 +24,7 @@ HTMLElement.prototype.nextSiblings = function() {
     let ptr = this.nextElementSibling;
 
     while(ptr){
-        nextSiblings.push(ptr.nextElementSibling);
+        nextSiblings.push(ptr);
         ptr = ptr.nextElementSibling;
     }
 
@@ -36,7 +36,7 @@ HTMLElement.prototype.previousSiblings = function() {
     let ptr = this.previousElementSibling;
 
     while(ptr){
-        previousSiblings.push(ptr.previousElementSibling);
+        previousSiblings.push(ptr);
         ptr = ptr.previousElementSibling;
     }
 
