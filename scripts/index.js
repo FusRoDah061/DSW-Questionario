@@ -106,7 +106,7 @@ var app = {
             `,
             type: 'success',
             customClass: {
-                confirmButton: 'btn btn-primary'
+                confirmButton: 'button btn-blue'
             },
             buttonsStyling: false
         })
@@ -137,7 +137,7 @@ function inicializaEventos (){
                 text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário para liberar esse limite.',
                 type: 'error',
                 customClass: {
-                    confirmButton: 'btn btn-primary'
+                    confirmButton: 'button btn-blue'
                 },
                 buttonsStyling: false
             })
@@ -166,8 +166,8 @@ function avaliar(metodo) {
         text: 'Finalizar e avaliar questionário? Suas tentativas serão apagadas após a avaliação.',
         type: 'question',
         customClass: {
-            confirmButton: 'btn btn-block btn-success',
-            cancelButton: 'btn btn-block btn-danger'
+            confirmButton: 'button display-block btn-green',
+            cancelButton: 'button display-block btn-red'
         },
         buttonsStyling: false,
         showCancelButton: true,

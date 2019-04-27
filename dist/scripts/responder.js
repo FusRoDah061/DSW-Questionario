@@ -1,18 +1,42 @@
 var app = {
 
+    btnProximaPergunta: document.getElementById('js-proxima-pergunta'),
+    btnPerguntaAnterior: document.getElementById('js-anterior-pergunta'),
+    btnExibeQuadro: document.getElementById('js-toggle-quadro'),
+    indicadoresPergunta: Array.from(document.getElementsByClassName('indicador')),
+    listaPerguntas: document.getElementById('js-perguntas'),
+
     perguntas: [],
     perguntasSorteadas: [],
     perguntaAtual: 1,
 
-    getListaPerguntas: function (successCallback, failCallback) {
+    getListaPerguntas: function () {
         $.ajax({
-            url: 'assets/perguntas.json',
+            url: 'assets/perguntas.xml',
             method: 'GET',
-            dataType: 'json',
-            success: successCallback.bind(this),
-            fail: failCallback.bind(this),
-            error: failCallback.bind(this)
+            dataType: 'xml',
+            success: this.OnAjaxSuccess.bind(this),
+            fail: this.OnAjaxFail.bind(this),
+            error: this.OnAjaxFail.bind(this)
         });
+    },
+
+    mapeiaPerguntas: function(perguntasXml) {
+        let perguntas = perguntasXml.getElementsByTagName('pergunta');
+        let perguntasJson = [];
+
+        for(let pergunta of perguntas) {
+            perguntasJson.push({
+                id: parseInt(pergunta.getAttribute('id')),
+                enunciado: pergunta.getElementsByTagName('enunciado')[0].textContent,
+                alternativaCorreta: pergunta.getAttribute('alternativa-correta'),
+                alternativas: Array.from(pergunta.getElementsByTagName('alternativa')).map(item => {
+                    return item.textContent
+                })
+            });
+        }
+
+        this.perguntas = perguntasJson;
     },
 
     apresentaPerguntas: function (perguntas) {
@@ -26,9 +50,9 @@ var app = {
             for (let j = 0; j < perguntas[i].alternativas.length; j++) {
 
                 alternativas += `
-                    <li class="form-check">
-                        <input class="form-check-input" type="radio" name="alternativas-${i}" data-pergunta="${perguntas[i].id}" id="opcao-${i}-${j}" value="${j}">
-                        <label class="form-check-label" for="opcao-${i}-${j}">
+                    <li class="checkbox">
+                        <input class="alternativa" type="radio" name="alternativas-${i}" data-pergunta="${perguntas[i].id}" id="opcao-${i}-${j}" value="${j}">
+                        <label for="opcao-${i}-${j}">
                             <span>${letras[j].toUpperCase()}.</span> ${perguntas[i].alternativas[j].encodeHtml().trim()}
                         </label>
                     </li>
@@ -48,63 +72,58 @@ var app = {
             `;
         }
 
-        $('#js-perguntas').html(html);
+        this.listaPerguntas.innerHTML = html;
 
-        $('.form-check-input').change(this, function (ev) {
-            if (this.checked) {
-                let perguntaId = $(this).attr('data-pergunta');
-                let resposta = $(this).val();
-                ev.data.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
-            }
+        this.listaPerguntas.addEventListener('click', this.OnPerguntaClick.bind(this));
+
+        Array.from(document.getElementsByClassName('alternativa')).forEach((item) => {
+            item.addEventListener('change', this.OnAlternativaCheckedChange.bind(this));
         });
 
-        $('.pergunta').click(this, function (ev) {
-            if ($('#js-toggle-quadro').prop("checked")) {
-                let pergunta = $(this).attr('data-num-pergunta');
-                $('#js-toggle-quadro').prop("checked", false);
-                ev.data.definePerguntaAtual(parseInt(pergunta));
-            }
-        });
-
+        this.definePerguntaAtual(1);
     },
 
     definePerguntaAtual: function (numero) {
-        let pergunta = $('#js-perguntas').children().eq(numero - 1);
+        let pergunta = this.listaPerguntas.children[numero - 1];
+        let classesToRemove = ['pergunta--ativa', 'pergunta-esq', 'pergunta-dir', 'pergunta-dir--esconde', 'pergunta-esq--esconde'];
 
-        let proxima = pergunta.next();
-        let anterior = pergunta.prev();
-        let classesToRemove = 'pergunta--ativa pergunta-esq pergunta-dir pergunta-dir--esconde pergunta-esq--esconde';
+        let proxima = pergunta.nextElementSibling;
+        let anterior = pergunta.previousElementSibling;
 
-        $(pergunta).removeClass(classesToRemove).addClass('pergunta--ativa');
+        pergunta.classList.remove(...classesToRemove);
+        pergunta.classList.add('pergunta--ativa');
 
-        $(anterior).removeClass(classesToRemove).addClass('pergunta-esq');
-        $(proxima).removeClass(classesToRemove).addClass('pergunta-dir');
+        if(anterior){
+            anterior.classList.remove(...classesToRemove);
+            anterior.classList.add('pergunta-esq');
 
-        $(proxima).nextAll().removeClass(classesToRemove).addClass('pergunta-dir--esconde');
-        $(anterior).prevAll().removeClass(classesToRemove).addClass('pergunta-esq--esconde');
+            let elementosAnteriores = anterior.previousSiblings();
 
-        if (numero > 1) {
-            let perguntaAnterior = $('#js-perguntas').children().eq(numero - 2);
-            perguntaAnterior.addClass('pergunta-esq');
-
-            perguntaAnterior.click(this, function (event) {
-                if ($(this).hasClass('pergunta-esq'))
-                    event.data.perguntaAnterior();
+            elementosAnteriores.forEach(function(elemento) {
+                if(elemento) {
+                    elemento.classList.remove(...classesToRemove);
+                    elemento.classList.add('pergunta-esq--esconde');
+                }
             });
         }
 
-        if (numero < 10) {
-            let proximaPergunta = $('#js-perguntas').children().eq(numero);
-            proximaPergunta.addClass('pergunta-dir');
+        if(proxima) {
+            proxima.classList.remove(...classesToRemove);
+            proxima.classList.add('pergunta-dir');
 
-            proximaPergunta.click(this, function (event) {
-                if ($(this).hasClass('pergunta-dir'))
-                    event.data.proximaPergunta();
+            let elementosProximos = proxima.nextSiblings();
+
+            elementosProximos.forEach(function(elemento) {
+                if(elemento) {
+                    elemento.classList.remove(...classesToRemove);
+                    elemento.classList.add('pergunta-dir--esconde');
+                }
             });
-
-            $('#js-proxima-pergunta').html('Próxima');
+        }
+        if (numero < 10) {
+            this.btnProximaPergunta.innerHTML = 'Próxima';
         } else if (numero >= 10) {
-            $('#js-proxima-pergunta').html('Finalizar');
+            this.btnProximaPergunta.innerHTML = 'Finalizar';
         }
 
         this.perguntaAtual = numero;
@@ -121,9 +140,9 @@ var app = {
         }
 
         if (app.perguntaAtual > 9)
-            $('#js-proxima-pergunta').html('Finalizar');
+            this.btnProximaPergunta.innerHTML = 'Finalizar';
         else
-            $('#js-proxima-pergunta').html('Próxima');
+            this.btnProximaPergunta.innerHTML = 'Próxima';
     },
 
     perguntaAnterior: function () {
@@ -132,21 +151,22 @@ var app = {
             this.definePerguntaAtual(this.perguntaAtual);
         }
 
-        $('#js-proxima-pergunta').html('Próxima');
+        this.btnProximaPergunta.innerHTML = 'Próxima';
     },
 
     atualizaIndicador: function (numeroAtual) {
         for (let i = 0; i < this.perguntasSorteadas.length; i++) {
-            let e = $('#js-indicador-perguntas').children().eq(i);
-            e.removeClass('indicador--atual');
-            e.removeClass('indicador--marcado');
+            let e = document.getElementById('js-indicador-perguntas').children[i];
+
+            e.classList.remove('indicador--atual');
+            e.classList.remove('indicador--marcado');
 
             if (this.perguntasSorteadas[i].respondida) {
-                e.addClass('indicador--marcado');
+                e.classList.add('indicador--marcado');
             }
 
             if (numeroAtual - 1 == i) {
-                e.addClass('indicador--atual');
+                e.classList.add('indicador--atual');
             }
         }
 
@@ -159,63 +179,136 @@ var app = {
             pergunta.respondida = true;
             pergunta.resposta = resposta;
 
-            $(`#pergunta-${pergunta.id}`).addClass('pergunta--respondida');
+            document.getElementById(`pergunta-${pergunta.id}`).classList.add('pergunta--respondida');
         }
     },
 
     salvarTentativa: function () {
 
         Swal.fire({
-                title: 'Resultado do questionário',
-                html: `
-                <p>Perguntas em <span style="color: #2f9e41">VERDE</span> estão corretas.</p>
-                <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
+            title: 'Resultado do questionário',
+            html: `
+            <p>Perguntas em <span style="color: #2f9e41">VERDE</span> estão corretas.</p>
+            <p>Perguntas em <span style="color: #cd191e">VERMELHO</span> estão incorretas</p>
 
-                <ul class="resultado">
-                    ${this.perguntasSorteadas.map(function(pergunta, i) {
-                        if (pergunta.resposta == pergunta['alternativa-correta'])
-                            return `<li class="resultado--certa">${i + 1}</li>`;
-                        else
-                            return `<li>${i + 1}</li>`;
-                    }).join(' ')}
-                </ul>
-            `,
-                type: 'info',
-                customClass: {
-                    confirmButton: 'btn btn-block btn-success',
-                    cancelButton: 'btn btn-block btn-danger'
-                },
-                buttonsStyling: false,
-                showCancelButton: true,
-                confirmButtonText: 'Concluir',
-                cancelButtonText: 'Descartar tentativa'
-            })
-            .then((result) => {
-                if (result.value) {
-                    let somadorNota = function (acumulador, pergunta) {
-                        if (pergunta.resposta == pergunta['alternativa-correta'])
-                            acumulador += 1;
+            <ul class="resultado">
+                ${this.perguntasSorteadas.map(function(pergunta, i) {
+                    if (pergunta.resposta == pergunta.alternativaCorreta)
+                        return `<li class="resultado--certa">${i + 1}</li>`;
+                    else
+                        return `<li>${i + 1}</li>`;
+                }).join(' ')}
+            </ul>
+        `,
+            type: 'info',
+            customClass: {
+                confirmButton: 'button display-block btn-green',
+                cancelButton: 'button display-block btn-red'
+            },
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: 'Concluir',
+            cancelButtonText: 'Descartar tentativa'
+        })
+        .then((result) => {
+            if (result.value) {
+                let somadorNota = function (acumulador, pergunta) {
+                    if (pergunta.resposta == pergunta.alternativaCorreta)
+                        acumulador += 1;
 
-                        return acumulador;
-                    };
+                    return acumulador;
+                };
 
-                    window.tentativas.push({
-                        data: new Date().toLocaleString('en-GB').split(',').join(''),
-                        perguntas: this.perguntasSorteadas,
-                        nota: this.perguntasSorteadas.reduce(somadorNota, 0)
-                    });
-                }
+                window.tentativas.push({
+                    data: new Date().toLocaleString('en-GB').split(',').join(''),
+                    perguntas: this.perguntasSorteadas,
+                    nota: this.perguntasSorteadas.reduce(somadorNota, 0)
+                });
+            }
 
-                location.href = 'index.html';
-            });
+            location.href = 'index.html';
+        });
     },
+
+    OnAjaxSuccess: function (perguntasXml) {
+        this.mapeiaPerguntas(perguntasXml);
+        this.perguntasSorteadas = this.perguntas.randomSample(10);
+
+        this.apresentaPerguntas(this.perguntasSorteadas);
+        this.definePerguntaAtual(this.perguntaAtual);
+    },
+
+    OnAjaxFail: function (jqXHR, textStatus, errorThrown) {
+        Swal.fire({
+            title: 'Ops!',
+            html: `
+                <p class="erro">
+                    Algo deu errado ao buscar as perguntas, e...
+                    <strong>sem perguntas, sem questionário &#128553;</strong>
+                </p>
+
+                <div>
+                    <div class="erro-description">
+                        ${errorThrown}: ${jqXHR.responseText}
+                    </div>
+                </div>
+            `,
+            type: 'error',
+            customClass: {
+                confirmButton: 'button btn-blue'
+            },
+            buttonsStyling: false
+        })
+        .then(function () {
+            location.href = 'index.html';
+        });
+    },
+
+    OnPerguntaClick: function(event) {
+        let target = event.target;
+
+        if(!target) return;
+
+        if (!target.classList.contains('pergunta') &&
+            !target.classList.contains('perguntas')) {
+            target = target.getParentByClass('pergunta');
+        }
+
+        if(target.classList.contains('pergunta')){
+
+            if (target.classList.contains('pergunta-esq') &&
+                !target.classList.contains('pergunta-esq--esconde')) {
+                this.perguntaAnterior();
+            }
+            else if (target.classList.contains('pergunta-dir') &&
+                    !target.classList.contains('pergunta-dir--esconde')) {
+                this.proximaPergunta();
+            }
+            else if (this.btnExibeQuadro.checked){
+                let pergunta = target.dataset.numPergunta;
+                this.btnExibeQuadro.checked = false;
+                this.definePerguntaAtual(parseInt(pergunta));
+            }
+        }
+    },
+
+    OnAlternativaCheckedChange: function(event) {
+        let alternativa = event.target;
+
+        if (alternativa.checked) {
+            let perguntaId = alternativa.dataset.pergunta;
+            let resposta = alternativa.value;
+            this.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
+        }
+    }
 };
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
 
-    verificaTentativas();
-    obterPerguntas();
-    inicializarEventos();
+    if(verificaTentativas()){
+        app.getListaPerguntas();
+        inicializarEventos();
+    }
 
 });
 
@@ -228,66 +321,29 @@ function verificaTentativas() {
             text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário na página inicial para liberar esse limite.',
             type: 'error',
             customClass: {
-                confirmButton: 'btn btn-primary'
+                confirmButton: 'button display-block btn-blue'
             },
             buttonsStyling: false
         })
         .then(function () {
             location.href = 'index.html';
         });
-}
 
-function obterPerguntas() {
-    app.getListaPerguntas(
-        function (perguntas) {
-            app.perguntas = perguntas;
-            app.perguntasSorteadas = app.perguntas.amostra(10);
-
-            app.apresentaPerguntas(app.perguntasSorteadas);
-            app.definePerguntaAtual(app.perguntaAtual);
-        },
-        function (jqXHR, textStatus, errorThrown) {
-            Swal.fire({
-                title: 'Ops!',
-                html: `
-                    <p class="erro">
-                        Algo deu errado ao buscar as perguntas, e...
-                        <strong>sem perguntas, sem questionário &#128553;</strong>
-                    </p>
-
-                    <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#erro-detalhes" aria-expanded="false" aria-controls="erro-detalhes">
-                        Mostrar detalhes
-                    </button>
-
-                    <div class="collapse" id="erro-detalhes">
-                        <div class="card card-body">
-                            ${errorThrown}: ${jqXHR.responseText}
-                        </div>
-                    </div>
-                `,
-                type: 'error',
-                customClass: {
-                    confirmButton: 'btn btn-primary'
-                },
-                buttonsStyling: false
-            })
-            .then(function () {
-                location.href = 'index.html';
-            });
-        }
-    );
+    return tentativas.length < 3;
 }
 
 function inicializarEventos() {
-    $('#js-proxima-pergunta').click(function () {
+    app.btnProximaPergunta.addEventListener('click', () => {
         app.proximaPergunta();
     });
 
-    $('#js-anterior-pergunta').click(function () {
+    app.btnPerguntaAnterior.addEventListener('click', () => {
         app.perguntaAnterior();
     });
 
-    $('.indicador').click(function () {
-        app.definePerguntaAtual(parseInt(this.innerHTML));
+    app.indicadoresPergunta.forEach(function(element) {
+        element.addEventListener('click', function() {
+            app.definePerguntaAtual(parseInt(this.innerHTML));
+        });
     });
 }

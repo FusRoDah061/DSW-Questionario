@@ -50,9 +50,9 @@ var app = {
             for (let j = 0; j < perguntas[i].alternativas.length; j++) {
 
                 alternativas += `
-                    <li class="form-check">
-                        <input class="alternativa form-check-input" type="radio" name="alternativas-${i}" data-pergunta="${perguntas[i].id}" id="opcao-${i}-${j}" value="${j}">
-                        <label class="form-check-label" for="opcao-${i}-${j}">
+                    <li class="checkbox">
+                        <input class="alternativa" type="radio" name="alternativas-${i}" data-pergunta="${perguntas[i].id}" id="opcao-${i}-${j}" value="${j}">
+                        <label for="opcao-${i}-${j}">
                             <span>${letras[j].toUpperCase()}.</span> ${perguntas[i].alternativas[j].encodeHtml().trim()}
                         </label>
                     </li>
@@ -202,8 +202,8 @@ var app = {
         `,
             type: 'info',
             customClass: {
-                confirmButton: 'btn btn-block btn-success',
-                cancelButton: 'btn btn-block btn-danger'
+                confirmButton: 'button display-block btn-green',
+                cancelButton: 'button display-block btn-red'
             },
             buttonsStyling: false,
             showCancelButton: true,
@@ -247,19 +247,15 @@ var app = {
                     <strong>sem perguntas, sem questionário &#128553;</strong>
                 </p>
 
-                <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#erro-detalhes" aria-expanded="false" aria-controls="erro-detalhes">
-                    Mostrar detalhes
-                </button>
-
-                <div class="collapse" id="erro-detalhes">
-                    <div class="card card-body">
+                <div>
+                    <div class="erro-description">
                         ${errorThrown}: ${jqXHR.responseText}
                     </div>
                 </div>
             `,
             type: 'error',
             customClass: {
-                confirmButton: 'btn btn-primary'
+                confirmButton: 'button btn-blue'
             },
             buttonsStyling: false
         })
@@ -325,7 +321,7 @@ function verificaTentativas() {
             text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário na página inicial para liberar esse limite.',
             type: 'error',
             customClass: {
-                confirmButton: 'btn btn-primary'
+                confirmButton: 'button display-block btn-blue'
             },
             buttonsStyling: false
         })

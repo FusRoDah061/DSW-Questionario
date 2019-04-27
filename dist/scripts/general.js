@@ -1,4 +1,4 @@
-Array.prototype.amostra = function (qtd) {
+Array.prototype.randomSample = function (qtd) {
     let amostra = [];
 
     if (this.length < qtd) throw new RangeError("O tamanho do vetor é menor do que o tamanho da amostra");
@@ -17,6 +17,42 @@ String.prototype.encodeHtml = function () {
     return this.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
         return '&#' + i.charCodeAt(0) + ';';
     });
+}
+
+HTMLElement.prototype.nextSiblings = function() {
+    let nextSiblings = [];
+    let ptr = this.nextElementSibling;
+
+    while(ptr){
+        nextSiblings.push(ptr);
+        ptr = ptr.nextElementSibling;
+    }
+
+    return nextSiblings;
+}
+
+HTMLElement.prototype.previousSiblings = function() {
+    let previousSiblings = [];
+    let ptr = this.previousElementSibling;
+
+    while(ptr){
+        previousSiblings.push(ptr);
+        ptr = ptr.previousElementSibling;
+    }
+
+    return previousSiblings;
+}
+
+HTMLElement.prototype.getParentByClass = function(classe) {
+    let parent = this.parentElement;
+
+    if(!parent) return;
+
+    while(!parent.classList.contains(classe)) {
+        parent = parent.parentElement;
+    }
+
+    return parent;
 }
 
 window.cookie = {

@@ -6,7 +6,6 @@
    <title>Questionário web IFSP</title>
 
    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Open+Sans:400,700" rel="stylesheet">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
    <link rel="stylesheet" href="styles/index.css">
 </head>
@@ -19,7 +18,7 @@
    <div class="app-content">
 
       <div class="content">
-         <button id="js-btn-inicia" class="btn btn-primary btn-lg" role="button">Responder questionário <i
+         <button id="js-btn-inicia" class="button btn-blue btn-lg">Responder questionário <i
                class="icon ion-md-send"></i></button>
 
          <div id="js-tentativas" class="tentativas">
@@ -33,16 +32,15 @@
             <h2>Avaliação</h2>
             <p class="text-muted">Selecione a forma de avaliação</p>
 
-            <div class="btn-group btn-group-sm col-md-12" role="group">
-               <button id="js-avaliar-maior-nota" class="btn btn-secondary">Maior nota</button>
-               <button id="js-avaliar-media-notas" class="btn btn-secondary">Média das notas</button>
-               <button id="js-avaliar-ultima-nota" class="btn btn-secondary">Última nota</button>
+            <div class="btn-group">
+               <button id="js-avaliar-maior-nota" class="button btn-gray no-margin small-font">Maior nota</button>
+               <button id="js-avaliar-media-notas" class="button btn-gray no-margin small-font">Média das notas</button>
+               <button id="js-avaliar-ultima-nota" class="button btn-gray no-margin small-font">Última nota</button>
             </div>
          </div>
       </div>
    </div>
 
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
    <script src="scripts/general.js"></script>
    <script src="scripts/index.js"></script>

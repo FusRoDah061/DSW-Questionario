@@ -8,11 +8,26 @@
   --btn-rm-cor-tentativas: rgba(0, 0, 0, .08);
 }
 
+.no-margin {
+  margin: 0 !important;
+}
+
+.small-font {
+  font-size: 12px !important;
+}
+
+.display-block {
+  display: block !important;
+  width: 100%;
+}
+
 * {
   font-family: 'Open Sans', sans-serif;
   padding: 0;
   margin: 0;
   color: #262626;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html,
@@ -24,6 +39,14 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+}
+
+li {
+  list-style: none;
+}
+
+ul, ol {
+  padding: 0;
 }
 
 .app-title {
@@ -196,15 +219,15 @@ body {
   margin-top: 10px;
 }
 
-.perguntas .pergunta .alternativas .form-check {
+.perguntas .pergunta .alternativas .checkbox {
   margin: 5px 0px;
 }
 
-.perguntas .pergunta .alternativas .form-check .form-check-label {
+.perguntas .pergunta .alternativas .checkbox label {
   font-size: 10pt;
 }
 
-.perguntas .pergunta .alternativas .form-check .form-check-label span {
+.perguntas .pergunta .alternativas .checkbox label span {
   font-weight: bold;
 }
 
@@ -318,7 +341,7 @@ body {
 
 .visao-quadro-label {
   cursor: pointer;
-  margin: 15px auto 25px auto;
+  margin: 15px auto 25px auto !important;
   display: block;
   width: 20vw;
   min-width: 150px;
@@ -593,6 +616,131 @@ body {
   background-color: #2f9e41 !important;
 }
 
+.button {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  -webkit-box-shadow: var(--box-shadow);
+          box-shadow: var(--box-shadow);
+  margin: 5px;
+}
+
+.btn-white {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #dae0e5;
+}
+
+.btn-white:hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+.btn-blue {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #0062cc;
+}
+
+.btn-blue:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-gray {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #545b62;
+}
+
+.btn-gray:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-outline-black {
+  color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-outline-black:hover {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-red {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #bd2130;
+}
+
+.btn-red:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-green {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #1e7e34;
+}
+
+.btn-green:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-lg {
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+.btn-group {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.checkbox {
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+}
+
+.checkbox input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.checkbox label {
+  display: inline-block;
+  margin-bottom: 0;
+  position: relative;
+}
+
 header {
   position: absolute;
   display: block;
@@ -626,4 +774,14 @@ header .app-title .ifsp span::before {
   display: block;
   font-weight: bold;
   font-size: 14pt;
+}
+
+.erro-description {
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 20px 30px;
+}
+
+.erro-description pre {
+  margin: 0;
 }

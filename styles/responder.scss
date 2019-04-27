@@ -1,10 +1,13 @@
 @import 'abstracts/variaveis';
+@import 'abstracts/utils';
 
 @import 'base/geral';
 
 @import 'components/indicador-pergunta';
 @import 'components/perguntas';
 @import 'components/resultado-avaliacao';
+@import 'components/botoes';
+@import 'components/checkbox';
 
 header {
    position: absolute;
@@ -41,5 +44,15 @@ header {
       display: block;
       font-weight: bold;
       font-size: 14pt;
+   }
+}
+
+.erro-description {
+   border: 1px solid #e6e6e6;
+   border-radius: 10px;
+   padding: 20px 30px;
+
+   pre {
+      margin: 0;
    }
 }

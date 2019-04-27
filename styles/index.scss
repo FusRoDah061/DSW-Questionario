@@ -1,8 +1,10 @@
 @import 'abstracts/variaveis';
+@import 'abstracts/utils';
 
 @import 'base/geral';
 
 @import 'components/lista-tentativas';
+@import 'components/botoes';
 
 .content {
    width: 30vw;

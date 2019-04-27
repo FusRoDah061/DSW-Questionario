@@ -26,16 +26,16 @@
        .alternativas {
           margin-top: 10px;
 
-          .form-check {
+          .checkbox {
              margin: 5px 0px;
 
-             .form-check-label {
-                font-size: 10pt;
+            label {
+               font-size: 10pt;
 
-                span {
-                   font-weight: bold;
-                }
-             }
+               span {
+                  font-weight: bold;
+               }
+            }
           }
        }
     }
