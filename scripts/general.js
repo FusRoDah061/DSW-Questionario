@@ -1,4 +1,4 @@
-Array.prototype.amostra = function (qtd) {
+Array.prototype.randomSample = function (qtd) {
     let amostra = [];
 
     if (this.length < qtd) throw new RangeError("O tamanho do vetor é menor do que o tamanho da amostra");
@@ -41,6 +41,18 @@ HTMLElement.prototype.previousSiblings = function() {
     }
 
     return previousSiblings;
+}
+
+HTMLElement.prototype.getParentByClass = function(classe) {
+    let parent = this.parentElement;
+
+    if(!parent) return;
+
+    while(!parent.classList.contains(classe)) {
+        parent = parent.parentElement;
+    }
+
+    return parent;
 }
 
 window.cookie = {

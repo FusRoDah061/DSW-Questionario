@@ -2,6 +2,7 @@ var app = {
 
     btnProximaPergunta: document.getElementById('js-proxima-pergunta'),
     btnPerguntaAnterior: document.getElementById('js-anterior-pergunta'),
+    btnExibeQuadro: document.getElementById('js-toggle-quadro'),
     indicadoresPergunta: Array.from(document.getElementsByClassName('indicador')),
     listaPerguntas: document.getElementById('js-perguntas'),
 
@@ -9,14 +10,14 @@ var app = {
     perguntasSorteadas: [],
     perguntaAtual: 1,
 
-    getListaPerguntas: function (successCallback, failCallback) {
+    getListaPerguntas: function () {
         $.ajax({
             url: 'assets/perguntas.xml',
             method: 'GET',
             dataType: 'xml',
-            success: successCallback.bind(this),
-            fail: failCallback.bind(this),
-            error: failCallback.bind(this)
+            success: this.events.OnAjaxSuccess.bind(this),
+            fail: this.events.OnAjaxFail.bind(this),
+            error: this.events.OnAjaxFail.bind(this)
         });
     },
 
@@ -50,7 +51,7 @@ var app = {
 
                 alternativas += `
                     <li class="form-check">
-                        <input class="form-check-input" type="radio" name="alternativas-${i}" data-pergunta="${perguntas[i].id}" id="opcao-${i}-${j}" value="${j}">
+                        <input class="alternativa form-check-input" type="radio" name="alternativas-${i}" data-pergunta="${perguntas[i].id}" id="opcao-${i}-${j}" value="${j}">
                         <label class="form-check-label" for="opcao-${i}-${j}">
                             <span>${letras[j].toUpperCase()}.</span> ${perguntas[i].alternativas[j].encodeHtml().trim()}
                         </label>
@@ -73,22 +74,13 @@ var app = {
 
         this.listaPerguntas.innerHTML = html;
 
-        $('.form-check-input').change(this, function (ev) {
-            if (this.checked) {
-                let perguntaId = $(this).attr('data-pergunta');
-                let resposta = $(this).val();
-                ev.data.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
-            }
+        this.listaPerguntas.addEventListener('click', this.events.OnPerguntaClick.bind(this));
+
+        Array.from(document.getElementsByClassName('alternativa')).forEach((item) => {
+            item.addEventListener('change', this.events.OnAlternativaCheckedChange.bind(this));
         });
 
-        $('.pergunta').click(this, function (ev) {
-            if ($('#js-toggle-quadro').prop("checked")) {
-                let pergunta = $(this).attr('data-num-pergunta');
-                $('#js-toggle-quadro').prop("checked", false);
-                ev.data.definePerguntaAtual(parseInt(pergunta));
-            }
-        });
-
+        this.definePerguntaAtual(1);
     },
 
     definePerguntaAtual: function (numero) {
@@ -128,20 +120,7 @@ var app = {
                 }
             });
         }
-
-        if (numero > 1) {
-            anterior.click(this, function (event) {
-                if (this.classList.contains('pergunta-esq'))
-                    event.data.perguntaAnterior();
-            });
-        }
-
         if (numero < 10) {
-            proxima.click(this, function (event) {
-                if (this.classList.contains('pergunta-dir'))
-                    event.data.proximaPergunta();
-            });
-
             this.btnProximaPergunta.innerHTML = 'Próxima';
         } else if (numero >= 10) {
             this.btnProximaPergunta.innerHTML = 'Finalizar';
@@ -250,44 +229,18 @@ var app = {
             location.href = 'index.html';
         });
     },
-};
 
-$(document).ready(function () {
+    events: {
 
-    verificaTentativas();
-    obterPerguntas();
-    inicializarEventos();
+        OnAjaxSuccess: function (perguntasXml) {
+            this.mapeiaPerguntas(perguntasXml);
+            this.perguntasSorteadas = this.perguntas.randomSample(10);
 
-});
-
-function verificaTentativas() {
-    let tentativas = window.tentativas.list();
-
-    if (tentativas.length >= 3)
-        Swal.fire({
-            title: 'Limite de tentativas alcançado',
-            text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário na página inicial para liberar esse limite.',
-            type: 'error',
-            customClass: {
-                confirmButton: 'btn btn-primary'
-            },
-            buttonsStyling: false
-        })
-        .then(function () {
-            location.href = 'index.html';
-        });
-}
-
-function obterPerguntas() {
-    app.getListaPerguntas(
-        function (perguntasXml) {
-            app.mapeiaPerguntas(perguntasXml);
-            app.perguntasSorteadas = app.perguntas.amostra(10);
-
-            app.apresentaPerguntas(app.perguntasSorteadas);
-            app.definePerguntaAtual(app.perguntaAtual);
+            this.apresentaPerguntas(this.perguntasSorteadas);
+            this.definePerguntaAtual(this.perguntaAtual);
         },
-        function (jqXHR, textStatus, errorThrown) {
+
+        OnAjaxFail: function (jqXHR, textStatus, errorThrown) {
             Swal.fire({
                 title: 'Ops!',
                 html: `
@@ -315,8 +268,75 @@ function obterPerguntas() {
             .then(function () {
                 location.href = 'index.html';
             });
+        },
+
+        OnPerguntaClick: function(event) {
+            let target = event.target;
+
+            if(!target) return;
+
+            if (!target.classList.contains('pergunta') &&
+                !target.classList.contains('perguntas')) {
+                target = target.getParentByClass('pergunta');
+            }
+
+            if(target.classList.contains('pergunta')){
+
+                if (target.classList.contains('pergunta-esq') &&
+                    !target.classList.contains('pergunta-esq--esconde')) {
+                    this.perguntaAnterior();
+                }
+                else if (target.classList.contains('pergunta-dir') &&
+                        !target.classList.contains('pergunta-dir--esconde')) {
+                    this.proximaPergunta();
+                }
+                else if (this.btnExibeQuadro.checked){
+                    let pergunta = target.dataset.numPergunta;
+                    this.btnExibeQuadro.checked = false;
+                    this.definePerguntaAtual(parseInt(pergunta));
+                }
+            }
+        },
+
+        OnAlternativaCheckedChange: function(event) {
+            let alternativa = event.target;
+
+            if (alternativa.checked) {
+                let perguntaId = alternativa.dataset.pergunta;
+                let resposta = alternativa.value;
+                this.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
+            }
         }
-    );
+    }
+};
+
+$(document).ready(function () {
+
+    if(verificaTentativas()){
+        app.getListaPerguntas();
+        inicializarEventos();
+    }
+
+});
+
+function verificaTentativas() {
+    let tentativas = window.tentativas.list();
+
+    if (tentativas.length >= 3)
+        Swal.fire({
+            title: 'Limite de tentativas alcançado',
+            text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário na página inicial para liberar esse limite.',
+            type: 'error',
+            customClass: {
+                confirmButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+        })
+        .then(function () {
+            location.href = 'index.html';
+        });
+
+    return tentativas.length < 3;
 }
 
 function inicializarEventos() {
