@@ -1,5 +1,12 @@
 var app = {
 
+    btnAvaliarMaiorNota: document.getElementById('js-avaliar-maior-nota'),
+    btnAvaliarUltimaNota: document.getElementById('js-avaliar-ultima-nota'),
+    btnAvaliarMediaNotas: document.getElementById('js-avaliar-media-notas'),
+    containerTentativas: document.getElementById('js-tentativas'),
+    containerAvaliacao: document.getElementById('js-avaliacao'),
+    listaTentativas: document.getElementById('js-tentativas-passadas'),
+
     tentativas: [],
 
     carregarTentativas: function () {
@@ -7,9 +14,10 @@ var app = {
 
         if(this.tentativas.length > 0){
 
-            $('#js-tentativas-passadas').html('');
+            this.listaTentativas.innerHTML = '';
+
             for(let i = 0; i < this.tentativas.length; i++) {
-                $('#js-tentativas-passadas').append(`
+                this.listaTentativas.innerHTML += `
                 <li>
                     <button class="lista-btn-rm" data-tentativa="${this.tentativas[i].id}"><i class="icon ion-md-trash"></i></button>
                     <div>
@@ -17,13 +25,19 @@ var app = {
                         <p class="nota">Nota: ${this.tentativas[i].nota}</p>
                         <p class="data">${this.tentativas[i].data}</p>
                     </div>
-                </li>
-                `);
+                </li>`;
             }
 
-            $('.lista-btn-rm').click(this, function (event){
-                let idTentativa = parseInt($(this).attr('data-tentativa'));
-                let caller = event.data;
+            this.listaTentativas.addEventListener('click', (event) => {
+                let target = event.target;
+
+                if(!target) return;
+
+                if(!target.classList.contains('lista-btn-rm')){
+                    target = target.getParentByClass('lista-btn-rm');
+                }
+
+                let idTentativa = parseInt(target.dataset.tentativa);
 
                 Swal.fire({
                     title: 'Remover tentativa?',
@@ -42,17 +56,17 @@ var app = {
                 .then((result) => {
                     if (result.value) {
                         window.tentativas.remove(idTentativa);
-                        caller.carregarTentativas();
+                        this.carregarTentativas();
                     }
                 })
             });
 
-            $('#js-tentativas').show(100);
-            $('#js-avaliacao').show(100);
+            this.containerTentativas.style.display = 'block';
+            this.containerAvaliacao.style.display = 'block';
         }
         else{
-            $('#js-tentativas').hide(100);
-            $('#js-avaliacao').hide(100);
+            this.containerTentativas.style.display = 'none';
+            this.containerAvaliacao.style.display = 'none';
         }
     },
 
@@ -104,20 +118,20 @@ var app = {
         this.tentativas = [];
         window.tentativas.clear();
 
-        $('#js-tentativas').hide(100);
-        $('#js-avaliacao').hide(100);
+        this.containerTentativas.style.display = 'none';
+        this.containerAvaliacao.style.display = 'none';
     }
 }
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
     app.carregarTentativas();
 
     inicializaEventos ();
 });
 
 function inicializaEventos (){
-    $('#js-btn-inicia').click(app, function (event) {
-        if(event.data.tentativas.length >= 3) {
+    document.getElementById('js-btn-inicia').addEventListener('click', function (event) {
+        if(app.tentativas.length >= 3) {
             Swal.fire({
                 title: 'Limite de tentativas alcançado',
                 text: 'Você atigiu o limite máximo de 3 tentativas. Finalize o questionário para liberar esse limite.',
@@ -133,15 +147,15 @@ function inicializaEventos (){
         }
     });
 
-    $('#js-avaliar-maior-nota').click(function () {
+    app.btnAvaliarMaiorNota.addEventListener('click', function () {
         avaliar('maior');
     });
 
-    $('#js-avaliar-media-notas').click(function () {
+    app.btnAvaliarMediaNotas.addEventListener('click', function () {
         avaliar('media');
     });
 
-    $('#js-avaliar-ultima-nota').click(function () {
+    app.btnAvaliarUltimaNota.addEventListener('click', function () {
         avaliar('ultima');
     });
 }

@@ -15,9 +15,9 @@ var app = {
             url: 'assets/perguntas.xml',
             method: 'GET',
             dataType: 'xml',
-            success: this.events.OnAjaxSuccess.bind(this),
-            fail: this.events.OnAjaxFail.bind(this),
-            error: this.events.OnAjaxFail.bind(this)
+            success: this.OnAjaxSuccess.bind(this),
+            fail: this.OnAjaxFail.bind(this),
+            error: this.OnAjaxFail.bind(this)
         });
     },
 
@@ -74,10 +74,10 @@ var app = {
 
         this.listaPerguntas.innerHTML = html;
 
-        this.listaPerguntas.addEventListener('click', this.events.OnPerguntaClick.bind(this));
+        this.listaPerguntas.addEventListener('click', this.OnPerguntaClick.bind(this));
 
         Array.from(document.getElementsByClassName('alternativa')).forEach((item) => {
-            item.addEventListener('change', this.events.OnAlternativaCheckedChange.bind(this));
+            item.addEventListener('change', this.OnAlternativaCheckedChange.bind(this));
         });
 
         this.definePerguntaAtual(1);
@@ -230,87 +230,84 @@ var app = {
         });
     },
 
-    events: {
+    OnAjaxSuccess: function (perguntasXml) {
+        this.mapeiaPerguntas(perguntasXml);
+        this.perguntasSorteadas = this.perguntas.randomSample(10);
 
-        OnAjaxSuccess: function (perguntasXml) {
-            this.mapeiaPerguntas(perguntasXml);
-            this.perguntasSorteadas = this.perguntas.randomSample(10);
+        this.apresentaPerguntas(this.perguntasSorteadas);
+        this.definePerguntaAtual(this.perguntaAtual);
+    },
 
-            this.apresentaPerguntas(this.perguntasSorteadas);
-            this.definePerguntaAtual(this.perguntaAtual);
-        },
+    OnAjaxFail: function (jqXHR, textStatus, errorThrown) {
+        Swal.fire({
+            title: 'Ops!',
+            html: `
+                <p class="erro">
+                    Algo deu errado ao buscar as perguntas, e...
+                    <strong>sem perguntas, sem questionário &#128553;</strong>
+                </p>
 
-        OnAjaxFail: function (jqXHR, textStatus, errorThrown) {
-            Swal.fire({
-                title: 'Ops!',
-                html: `
-                    <p class="erro">
-                        Algo deu errado ao buscar as perguntas, e...
-                        <strong>sem perguntas, sem questionário &#128553;</strong>
-                    </p>
+                <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#erro-detalhes" aria-expanded="false" aria-controls="erro-detalhes">
+                    Mostrar detalhes
+                </button>
 
-                    <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#erro-detalhes" aria-expanded="false" aria-controls="erro-detalhes">
-                        Mostrar detalhes
-                    </button>
-
-                    <div class="collapse" id="erro-detalhes">
-                        <div class="card card-body">
-                            ${errorThrown}: ${jqXHR.responseText}
-                        </div>
+                <div class="collapse" id="erro-detalhes">
+                    <div class="card card-body">
+                        ${errorThrown}: ${jqXHR.responseText}
                     </div>
-                `,
-                type: 'error',
-                customClass: {
-                    confirmButton: 'btn btn-primary'
-                },
-                buttonsStyling: false
-            })
-            .then(function () {
-                location.href = 'index.html';
-            });
-        },
+                </div>
+            `,
+            type: 'error',
+            customClass: {
+                confirmButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+        })
+        .then(function () {
+            location.href = 'index.html';
+        });
+    },
 
-        OnPerguntaClick: function(event) {
-            let target = event.target;
+    OnPerguntaClick: function(event) {
+        let target = event.target;
 
-            if(!target) return;
+        if(!target) return;
 
-            if (!target.classList.contains('pergunta') &&
-                !target.classList.contains('perguntas')) {
-                target = target.getParentByClass('pergunta');
+        if (!target.classList.contains('pergunta') &&
+            !target.classList.contains('perguntas')) {
+            target = target.getParentByClass('pergunta');
+        }
+
+        if(target.classList.contains('pergunta')){
+
+            if (target.classList.contains('pergunta-esq') &&
+                !target.classList.contains('pergunta-esq--esconde')) {
+                this.perguntaAnterior();
             }
-
-            if(target.classList.contains('pergunta')){
-
-                if (target.classList.contains('pergunta-esq') &&
-                    !target.classList.contains('pergunta-esq--esconde')) {
-                    this.perguntaAnterior();
-                }
-                else if (target.classList.contains('pergunta-dir') &&
-                        !target.classList.contains('pergunta-dir--esconde')) {
-                    this.proximaPergunta();
-                }
-                else if (this.btnExibeQuadro.checked){
-                    let pergunta = target.dataset.numPergunta;
-                    this.btnExibeQuadro.checked = false;
-                    this.definePerguntaAtual(parseInt(pergunta));
-                }
+            else if (target.classList.contains('pergunta-dir') &&
+                    !target.classList.contains('pergunta-dir--esconde')) {
+                this.proximaPergunta();
             }
-        },
-
-        OnAlternativaCheckedChange: function(event) {
-            let alternativa = event.target;
-
-            if (alternativa.checked) {
-                let perguntaId = alternativa.dataset.pergunta;
-                let resposta = alternativa.value;
-                this.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
+            else if (this.btnExibeQuadro.checked){
+                let pergunta = target.dataset.numPergunta;
+                this.btnExibeQuadro.checked = false;
+                this.definePerguntaAtual(parseInt(pergunta));
             }
+        }
+    },
+
+    OnAlternativaCheckedChange: function(event) {
+        let alternativa = event.target;
+
+        if (alternativa.checked) {
+            let perguntaId = alternativa.dataset.pergunta;
+            let resposta = alternativa.value;
+            this.marcaPerguntaRespondida(parseInt(perguntaId), parseInt(resposta));
         }
     }
 };
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function() {
 
     if(verificaTentativas()){
         app.getListaPerguntas();
