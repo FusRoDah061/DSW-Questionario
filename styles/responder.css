@@ -719,6 +719,10 @@ button:not(:disabled) {
   display: -ms-inline-flexbox;
   display: inline-flex;
   vertical-align: middle;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
 }
 
 .checkbox {

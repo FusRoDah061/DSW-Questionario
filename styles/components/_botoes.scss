@@ -96,4 +96,6 @@ button:not(:disabled) {
     position: relative;
     display: inline-flex;
     vertical-align: middle;
+    justify-content: space-between;
+    width: 100%;
 }
