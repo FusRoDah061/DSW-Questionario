@@ -21,4 +21,8 @@ function html() {
         .pipe(gulp.dest('./dist'));
 }
 
-gulp.task('default', gulp.parallel(css, js, html, assets));
+exports.js = js;
+exports.css = css;
+exports.html = html;
+exports.assets = assets;
+exports.default = gulp.parallel(html, css, js);

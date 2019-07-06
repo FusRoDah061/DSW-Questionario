@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp default",
+    "start": "node server.js"
   },
   "author": "Allex Rodrigues",
   "license": "ISC",
@@ -13,6 +15,7 @@
     "gulp": "^4.0.0"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "sfcookies": "^1.0.2"
   }
 }
